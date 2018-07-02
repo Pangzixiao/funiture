@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>
+	<constant name="struts.devMode" value="true" />
+	<constant name="struts.custom.i18n.resources" value="global" />
+	<package name="default" extends="struts-default">
+		<action name="Login" class="controller.UserAction" method="login">
+			<result name="success">/success.jsp</result>
+			<result name="fail">/fail.jsp</result>
+		</action>
+
+        <action name="showTypes" class="controller.TypeAction">
+            <result >/typesdeal.jsp</result>
+        </action>
+        
+        <action name="updateType" class="controller.TypeAction" method="update">
+            <result name="success">/success.jsp</result>
+            <result name="fault">/fail.jsp</result>
+        </action>
+		
+		<action name="findType" class="controller.TypeAction" method = "findType">
+		    <result >/updateType.jsp</result>
+		</action>
+		
+		<action name="showFormsByid" class="controller.FormsAction">
+		    <result >/showFormsByid.jsp</result>
+		</action>
+		
+		
+		<action name="del_form" class="controller.FormsAction" method="delForm">
+		    <result name="success" >/success.jsp</result>
+		    <result name="fault">/fail.jsp</result>
+		</action>
+		
+		<action name="add_form" class="controller.FormsAction" method = "addForm">
+		    <result name="success" >/success.jsp</result>
+		    <result name="fault">/fail.jsp</result>
+		</action>
+		
+		<action name="find_form" class="controller.FormsAction" method = "findForm">
+		    <result>/addFormsForType.jsp</result>
+		</action>
+		
+		
+	</package>
+	<include file="brand.xml" />
+
+</struts>
