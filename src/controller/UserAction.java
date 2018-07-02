@@ -11,7 +11,8 @@ import dao.UserDAOImp;
 
 public class UserAction extends ActionSupport {
     User user;
-    String type;
+    int type;
+    
 	public User getUser() {
 		return user;
 	}
@@ -19,21 +20,25 @@ public class UserAction extends ActionSupport {
 	public void setUser(User user) {
 		this.user = user;
 	}
-    
-	
-	
-	public String getType() {
+
+	public int getType() {
 		return type;
 	}
 
-	public void setType(String type) {
+	public void setType(int type) {
 		this.type = type;
 	}
 
 	public String login()throws Exception{
 		boolean isTrue;
     	UserDAO userdao = new UserDAOImp();
-		isTrue = userdao.check_pass(user,"admin");
+		if(type == 0){
+			isTrue = userdao.check_pass(user,"admin");
+		}else if(type == 1){
+			isTrue = userdao.check_pass(user,"shopUser");
+		}else{
+			isTrue = userdao.check_pass(user,"user");
+		}
 //		if(isTrue == true){
 //			Map session = ActionContext.getContext().getSession();
 //			session.put("user", user.getUid());

@@ -17,6 +17,7 @@
     <s:form action="Login" method ="post">
        <s:textfield key="user.uid" label="用户名"/><br>
        <s:password key="user.pass" label="密码"/><br>
+       <s:radio list="#{'0':'管理员','1':'商家','2':'普通用户'}" name="type" value="2"/>
        <s:submit/>
     </s:form>
     
