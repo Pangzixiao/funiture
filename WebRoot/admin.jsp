@@ -1,4 +1,7 @@
-<%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ page language="java" pageEncoding="utf-8" contentType="text/html;charset=utf-8"%>
+<%@ taglib prefix="s" uri="/struts-tags" %>
+<%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
+<%@ taglib prefix="sjr" uri="/struts-jquery-richtext-tags"%>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -9,15 +12,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-   
+    <title>login</title>
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
+<s:head/>
+<sj:head/>
   </head>
-  
-  <body>
-    <a href="login.jsp">登录</a> <br>
-    <a href="showTypes">测试链接</a>
-    <a href="regist.jsp">注册</a>
+  <s:debug/>
+  <b>管理员登录成功</b>
   </body>
 </html>
+

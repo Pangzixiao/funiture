@@ -7,7 +7,14 @@
 	<constant name="struts.custom.i18n.resources" value="global" />
 	<package name="default" extends="struts-default">
 		<action name="Login" class="controller.UserAction" method="login">
-			<result name="success">/success.jsp</result>
+			<result name="suc_admin">/admin.jsp</result>
+			<result name="suc_shoper">/shoper.jsp</result>
+			<result name="suc_user">/user.jsp</result>
+			<result name="fail">/fail.jsp</result>
+		</action>
+		
+		<action name="regist" class="controller.UserAction" method="addUser">
+			<result name="success">/user.jsp</result>
 			<result name="fail">/fail.jsp</result>
 		</action>
 

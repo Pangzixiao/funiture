@@ -21,4 +21,17 @@ public class UserDAOImp implements UserDAO {
     	return isTure;
     }
 
+	@Override
+	public boolean addUser(User user, String formname) throws Exception {
+		boolean isTrue = false;
+    	jdbcUtils.getConnection();
+    	String sql = "insert into "+formname+" (uid,pass,phone)values(?,?,?)";
+    	List params = new ArrayList();
+    	params.add(user.getUid());
+    	params.add(user.getPass());
+    	params.add(user.getPhone());
+    	isTrue = jdbcUtils.updateByPreparedStatement(sql, params);
+    	jdbcUtils.releaseConn();
+		return isTrue;
+	}
 }

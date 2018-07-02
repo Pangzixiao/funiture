@@ -10,9 +10,10 @@ import dao.UserDAO;
 import dao.UserDAOImp;
 
 public class UserAction extends ActionSupport {
-    User user;
-    int type;
-    
+	User user;
+	int type;
+	UserDAO userdao = new UserDAOImp();
+
 	public User getUser() {
 		return user;
 	}
@@ -29,20 +30,38 @@ public class UserAction extends ActionSupport {
 		this.type = type;
 	}
 
-	public String login()throws Exception{
+	public String login() throws Exception {
 		boolean isTrue;
-    	UserDAO userdao = new UserDAOImp();
-		if(type == 0){
-			isTrue = userdao.check_pass(user,"admin");
-		}else if(type == 1){
-			isTrue = userdao.check_pass(user,"shopUser");
-		}else{
-			isTrue = userdao.check_pass(user,"user");
+		if (type == 0) {
+			isTrue = userdao.check_pass(user, "admin");
+			if (isTrue == true) {
+				return "suc_admin";
+			}
+		} else if (type == 1) {
+			isTrue = userdao.check_pass(user, "shopUser");
+			if (isTrue == true) {
+				return "suc_shoper";
+			}
+		} else {
+			isTrue = userdao.check_pass(user, "user");
+			if (isTrue == true) {
+				return "suc_user";
+			}
 		}
-//		if(isTrue == true){
-//			Map session = ActionContext.getContext().getSession();
-//			session.put("user", user.getUid());
-//		}
-    	return isTrue? "success":"fair";
+		// if(isTrue == true){
+		// Map session = ActionContext.getContext().getSession();
+		// session.put("user", user.getUid());
+		// }
+		return "fail";
+	}
+
+	public String addUser() throws Exception {
+		boolean isTrue = false;
+    	if(type==0){
+    		isTrue = userdao.addUser(user, "shopUser");
+    	}else{
+    		isTrue = userdao.addUser(user, "user");
+    	}
+		return isTrue?"success":"fail";
 	}
 }

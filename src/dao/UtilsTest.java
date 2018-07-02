@@ -1,17 +1,13 @@
 package dao;
 
-import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
-
 import org.junit.Test;
 
-import bean.Forms;
+import bean.User;
 
 public class UtilsTest {
 	FormsDAO formsdao = new FormsDAOImp();
 	TypeDAO typedao = new TypeDAOImp();
+	UserDAO userdao = new UserDAOImp();
 
 	@Test
 	public void test() throws Exception {
@@ -21,11 +17,16 @@ public class UtilsTest {
 //			System.out.println("风格名:" + f.getForm_name());
 //		}
 		
-		Forms forms = new Forms();
-		forms.setC_id(11);
-		forms.setForm_name("风格测试");
+//		Forms forms = new Forms();
+//		forms.setC_id(11);
+//		forms.setForm_name("风格测试");
 //		System.out.println(formsdao.add(forms));
-		System.out.println(formsdao.del(forms));
+//		System.out.println(formsdao.del(forms));
+		
+		User user = new User();
+		user.setUid("0700");
+		user.setPass("123");
+		System.out.println(userdao.addUser(user, "user"));
 	}
 
 }

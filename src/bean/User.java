@@ -1,8 +1,7 @@
 package bean;
 
 public class User {
-    String uid,pass;
-    int default_num;
+    String uid,pass,phone;
 	public String getUid() {
 		return uid;
 	}
@@ -15,11 +14,12 @@ public class User {
 	public void setPass(String pass) {
 		this.pass = pass;
 	}
-	public int getDefault_num() {
-		return default_num;
+	public String getPhone() {
+		return phone;
 	}
-	public void setDefault_num(int default_num) {
-		this.default_num = default_num;
+	public void setPhone(String phone) {
+		this.phone = phone;
 	}
+	
     
 }
