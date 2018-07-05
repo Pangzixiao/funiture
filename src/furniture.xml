@@ -15,11 +15,16 @@
 		</action>
 		
 		<action name="addFurniturePre" class="controller.DetailAction" method ="addFuniturePre">
-		    <result>addfurniture.jsp</result>
+		    <result>/addfurniture.jsp</result>
 		</action>
 		
 		<action name="showUpInfo" class="controller.FurnitureAction" method ="getAllFunitureByshoper">
-		    <result>showShoperFunitures.jsp</result>
+		    <result>/showShoperFunitures.jsp</result>
+		</action>
+		
+		<action name="showDetailByid" class="controller.DetailAction" method ="findById">
+		    <result name="success">/detail_list.jsp</result>
+		    <result name="fail">/fail.jsp</result>
 		</action>
   </package> 
 </struts>

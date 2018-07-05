@@ -45,6 +45,24 @@ public class DetailDAOImp implements DetailDAO {
     	return isTrue;
 	}
 
+	@Override
+	public boolean findById(Detail detail) throws Exception {
+		boolean isTrue = false;
+		String sql = "select * from detail where detail_id = ?";
+		jdbcUtils.getConnection();
+    	List params = new ArrayList();
+    	params.add(detail.getDetail_id());
+    	Map<String,Object>map = jdbcUtils.findSimpleResult(sql, params);
+    	if(!map.isEmpty()){
+    		isTrue = true;
+    		detail.setBrand((String)map.get("brand"));
+        	detail.setForm((String)map.get("form"));
+        	detail.setIntroduce((String)map.get("introduce"));
+    	}
+    	jdbcUtils.releaseConn();
+    	return isTrue;
+	}
+
 	
 	
 }

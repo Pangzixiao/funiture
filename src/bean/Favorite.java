@@ -2,14 +2,8 @@ package bean;
 
 public class Favorite {
 
-	int id,furniture_id;
-	String uid;
-	public int getId() {
-		return id;
-	}
-	public void setId(int id) {
-		this.id = id;
-	}
+	int furniture_id;
+	String uid,shoper;
 	public int getFurniture_id() {
 		return furniture_id;
 	}
@@ -22,5 +16,12 @@ public class Favorite {
 	public void setUid(String uid) {
 		this.uid = uid;
 	}
+	public String getShoper() {
+		return shoper;
+	}
+	public void setShoper(String shoper) {
+		this.shoper = shoper;
+	}
+	
 	
 }

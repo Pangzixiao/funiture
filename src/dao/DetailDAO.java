@@ -26,4 +26,6 @@ public interface DetailDAO {
 	 * @throws Exception
 	 */
 	public boolean update(Detail detail)throws Exception;
+	
+	public boolean findById(Detail detail)throws Exception;
 }

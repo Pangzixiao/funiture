@@ -21,7 +21,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   <s:debug/>
   <b>用户登录成功</b>
-    <a href="showTypes">开始</a>
+    <a>开始购物之旅</a>
+    <a>查看我的收藏</a>
+    <a href="findFromCar">查看购物车</a>
+    <a>查看购买记录</a>
   </body>
 </html>
 

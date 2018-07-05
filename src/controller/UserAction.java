@@ -42,12 +42,16 @@ public class UserAction extends ActionSupport {
 			isTrue = userdao.check_pass(user, "shopUser");
 			if (isTrue == true) {
 				Map session = ActionContext.getContext().getSession();
-				session.put("shoper",user.getUid());
+				session.put("shoper", user.getUid());
 				return "suc_shoper";
 			}
 		} else {
 			isTrue = userdao.check_pass(user, "user");
 			if (isTrue == true) {
+				// 获取session
+				Map session = ActionContext.getContext().getSession();
+				// 将用户名存入session
+				session.put("user", user.getUid());
 				return "suc_user";
 			}
 		}
@@ -60,18 +64,11 @@ public class UserAction extends ActionSupport {
 
 	public String addUser() throws Exception {
 		boolean isTrue = false;
-    	if(type==0){
-    		isTrue = userdao.addUser(user, "shopUser");
-    	}else{
-    		//在用户登录表中添加用户信息
-    		isTrue = userdao.addUser(user, "user");
-    		//为用户生成收藏夹(用utils中的方法向用户收藏夹对应关系表中添加记录返回收藏夹id)
-    		Utils utils = new Utils();
-    		int favorite_id = utils.addFavoriteUser(user.getUid());
-    		//为用户生成购物车(用utils中的方法向用户购物车对应关系表中添加记录返回购物车id)
-    		int car_id = utils.addCarUser(user.getUid());
-    		
-    	}
-		return isTrue?"success":"fail";
+		if (type == 0) {
+			isTrue = userdao.addUser(user, "shopUser");
+		} else {
+			isTrue = userdao.addUser(user, "user");
+		}
+		return isTrue ? "success" : "fail";
 	}
 }

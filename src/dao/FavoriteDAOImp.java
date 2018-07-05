@@ -2,20 +2,23 @@ package dao;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
 import bean.Brand;
 import bean.Favorite;
+import bean.Forms;
 
 public class FavoriteDAOImp implements FavoriteDAO {
 
 	@Override
 	public boolean del(Favorite favorite) throws Exception {
-		String sql = "delete from favorite where id = ? and furniture_id = ?";
+		String sql = "delete from favorite where uid = ? and furniture_id = ? and shoper = ?";
 		boolean istrue = false;
 		jdbcUtils.getConnection();
     	List params = new ArrayList();
-    	params.add(favorite.getId());
+    	params.add(favorite.getUid());
     	params.add(favorite.getFurniture_id());
+    	params.add(favorite.getShoper());
     	istrue = jdbcUtils.updateByPreparedStatement(sql, params);
     	jdbcUtils.releaseConn();
 		return istrue;
@@ -23,16 +26,28 @@ public class FavoriteDAOImp implements FavoriteDAO {
 
 	@Override
 	public boolean add(Favorite favorite) throws Exception {
-		String sql = "insert into favorite(id,furniture_id,uid) values(?,?,?)";
+		String sql = "insert into favorite(uid,furniture_id,shoper) values(?,?,?)";
 		boolean istrue = false;
 		jdbcUtils.getConnection();
     	List params = new ArrayList();
-    	params.add(favorite.getId());
-    	params.add(favorite.getFurniture_id());
     	params.add(favorite.getUid());
+    	params.add(favorite.getFurniture_id());
+    	params.add(favorite.getShoper());
     	istrue = jdbcUtils.updateByPreparedStatement(sql, params);
     	jdbcUtils.releaseConn();
 		return istrue;
+	}
+
+	@Override
+	public boolean isExit(String uid) throws Exception {
+		jdbcUtils.getConnection();
+		List<Forms> list = new ArrayList<Forms>();
+		String sql = "select * from favorite where uid = ?";
+		List params = new ArrayList();
+		params.add(uid);
+		Map<String, Object> map = jdbcUtils.findSimpleResult(sql, params);
+		jdbcUtils.releaseConn();
+		return map.isEmpty();
 	}
 
 	

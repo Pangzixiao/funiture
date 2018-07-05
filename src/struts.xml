@@ -54,6 +54,10 @@
 		    <result>/suc.jsp</result>
 		</action>
 		
+		<action name="findFromCar" class="controller.CarAction" >
+		    <result name="success">/success.jsp</result>
+		    <result name="empty">/empty.jsp </result>
+		</action>
 	</package>
 	<include file="brand.xml" />
     <include file="furniture.xml" />

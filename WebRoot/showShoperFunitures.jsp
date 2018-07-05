@@ -18,21 +18,17 @@
     <table style="border:1px solid green"><tr><td>funitureName<td>price<td>salevolume<td>select</tr>
     
     <s:iterator value="list" var="row">
-    <div>
-  
-    <img src="${pageContext.request.contextPath}/<s:property value="'upload/empty.png'"/>" height="200" width="400">
-   
-    
+
     <tr>
       <td><s:property value="#row.furniture_name"/>
       <td><s:property value="#row.price"/>
       <td><s:property value="#row.salevolume"/>
     
     <td>
-      <s:url var="showInfoUrl" action="">
+      <s:url var="showInfoUrl" action="showDetailByid">
          <s:param name="detail.detail_id" value="#row.detail_id"/>
       </s:url>
-      <a href="${delBrandUrl}">查看详细信息</a>
+      <a href="${showInfoUrl}">查看详细信息</a>
     </td>
     <td>
     <s:url var="showCommandUrl" action="">
@@ -41,9 +37,23 @@
       </s:url>
       <a href="${showCommentUrl}">显示评论</a>
     </td>
+    
+    <td>
+    <s:url var="changePicUrl" action="">
+         <s:param name="comment.furniture_id" value="#row.furniture_id"/>
+         <s:param name="comment.shoper" value="row.uid"/>
+      </s:url>
+      <a href="${showCommentUrl}">更改图片</a>
+    </td>
+    
+    <td>
+    <s:url var="showPicUrl" action="">
+         <s:param name="comment.furniture_id" value="#row.furniture_id"/>
+         <s:param name="comment.shoper" value="row.uid"/>
+      </s:url>
+      <a href="${showCommentUrl}">查看图片</a>
+    </td>
     </tr>
-     </img>
-    </div>
     </s:iterator>
     
     
