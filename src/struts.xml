@@ -50,8 +50,11 @@
 		    <result>/addFormsForType.jsp</result>
 		</action>
 		
+		<action name="upload" class="controller.FileUpload" >
+		    <result>/suc.jsp</result>
+		</action>
 		
 	</package>
 	<include file="brand.xml" />
-
+    <include file="furniture.xml" />
 </struts>

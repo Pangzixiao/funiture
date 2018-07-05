@@ -50,5 +50,15 @@ public class TypeDAOImp implements TypeDAO {
     	jdbcUtils.releaseConn();
 	}
 
-	
+	@Override
+	public void findTypeByName(Type type) throws Exception {
+		jdbcUtils.getConnection();
+    	String sql = "select * from type where c_name = ?";
+    	List params = new ArrayList();
+    	params.add(type.getC_name());
+    	Map<String,Object> f = jdbcUtils.findSimpleResult(sql, params);
+    	type.setC_id((int)f.get("c_id"));
+    	jdbcUtils.releaseConn();
+		
+	}
 }

@@ -33,6 +33,12 @@ public class Utils {
 		return list;
 	}
 
+	/**
+	 * 通过分类号查询所有的品牌
+	 * @param c_id
+	 * @return
+	 * @throws SQLException
+	 */
 	public static List<Brand> getAllBrands(int c_id) throws SQLException {
 		JdbcUtils jdbcUtils = new JdbcUtils();
 		jdbcUtils.getConnection();
@@ -48,5 +54,54 @@ public class Utils {
 			list.add(brand);
 		}
 		return list;
+	}
+	
+	/**
+	 * 向购物车和用户对应关系中添加记录
+	 * 并返回新添加的购物车的标识
+	 * 
+	 */
+	
+	public static int addCarUser(String uid)throws Exception{
+		int carid = 0;
+		String sql = "insert into car_user(uid) values(?)";
+		boolean istrue = false;
+		JdbcUtils jdbcUtils = new JdbcUtils();
+		jdbcUtils.getConnection();
+    	List params = new ArrayList();
+    	params.add(uid);
+    	istrue = jdbcUtils.updateByPreparedStatement(sql, params);
+    	if(istrue){
+    		String sql2 ="select car_id from car_user where uid = ?";
+    		Map<String, Object> map = jdbcUtils.findSimpleResult(sql2, params);
+    		carid = (int)map.get("car_id");
+    	}
+    	jdbcUtils.releaseConn();
+		return carid;
+	}
+	
+	
+	/**
+	 * 向收藏夹和用户对应关系中添加记录
+	 * 并返回新添加的收藏夹的标识
+	 * 
+	 */
+	
+	public static int addFavoriteUser(String uid)throws Exception{
+		int favoriteid = 0;
+		String sql = "insert into favorite_user(uid) values(?)";
+		boolean istrue = false;
+		JdbcUtils jdbcUtils = new JdbcUtils();
+		jdbcUtils.getConnection();
+    	List params = new ArrayList();
+    	params.add(uid);
+    	istrue = jdbcUtils.updateByPreparedStatement(sql, params);
+    	if(istrue){
+    		String sql2 ="select favorite_id from favorite_user where uid = ?";
+    		Map<String, Object> map = jdbcUtils.findSimpleResult(sql2, params);
+    		favoriteid = (int)map.get("favorite_id");
+    	}
+    	jdbcUtils.releaseConn();
+		return favoriteid;
 	}
 }

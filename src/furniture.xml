@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE struts PUBLIC
+    "-//Apache Software Foundation//DTD Struts Configuration 2.5//EN"
+    "http://struts.apache.org/dtds/struts-2.5.dtd">
+<struts>   
+  <package name="furniture" extends="struts-default">   
+		<action name="add_furniture" class="controller.FurnitureAction" method = "addFurniture">
+		    <result name="suc" >/addDetail.jsp</result>
+		    <result name="fail">/fail.jsp</result>
+		</action>
+		
+		<action name="add_detail" class="controller.DetailAction" method = "addDetail">
+		    <result name="suc" >/success.jsp</result>
+		    <result name="fail">/fail.jsp</result>
+		</action>
+		
+		<action name="addFurniturePre" class="controller.DetailAction" method ="addFuniturePre">
+		    <result>addfurniture.jsp</result>
+		</action>
+		
+		<action name="showUpInfo" class="controller.FurnitureAction" method ="getAllFunitureByshoper">
+		    <result>showShoperFunitures.jsp</result>
+		</action>
+  </package> 
+</struts>
