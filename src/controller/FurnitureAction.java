@@ -23,7 +23,17 @@ public class FurnitureAction extends ActionSupport {
 	Furniture furniture;
 	List<Furniture> list;
 	Detail detail = new Detail();
+	String form;
 	FurnitureDAO furnituredao = new FurnitureDAOImp();
+
+	
+	public String getForm() {
+		return form;
+	}
+
+	public void setForm(String form) {
+		this.form = form;
+	}
 
 	public List<Forms> getForms() {
 		return forms;

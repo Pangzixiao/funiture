@@ -1,5 +1,7 @@
 package dao;
 
+import java.util.List;
+
 import bean.Detail;
 
 public interface DetailDAO {
@@ -26,6 +28,19 @@ public interface DetailDAO {
 	 * @throws Exception
 	 */
 	public boolean update(Detail detail)throws Exception;
+	/**
+	 * 通过id查询
+	 * @param detail
+	 * @return
+	 * @throws Exception
+	 */
 	
 	public boolean findById(Detail detail)throws Exception;
+	/**
+	 * 查询某个风格的所有细节id
+	 * @param form
+	 * @return
+	 * @throws Exception
+	 */
+	public List<Integer> getAllDetailID(String form)throws Exception;
 }

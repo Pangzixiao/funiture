@@ -1,7 +1,10 @@
 package dao;
 
 import java.util.ArrayList;
+import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
+import java.util.Set;
 
 import bean.Brand;
 
@@ -31,6 +34,25 @@ public class BrandDAOImp implements BrandDAO {
     	istrue = jdbcUtils.updateByPreparedStatement(sql, params);
     	jdbcUtils.releaseConn();
 		return istrue;
+	}
+
+	@Override
+	public List<String> getAllBrands() throws Exception {
+		jdbcUtils.getConnection();
+		String sql = "select * from brand";
+		List params = new ArrayList();
+		Set<String> brands = new HashSet<String>();
+		List<Map<String, Object>> maps = new ArrayList<Map<String, Object>>();
+		maps = jdbcUtils.findMoreResult(sql, params);
+		for (Map<String, Object> map : maps) {
+			brands.add((String)map.get("brand_name"));
+		}
+		jdbcUtils.releaseConn();
+		List<String> list = new ArrayList<String>();
+		for(String s:brands){
+			list.add(s);
+		}
+		return list;
 	}
 
 	

@@ -50,6 +50,29 @@ public class FavoriteDAOImp implements FavoriteDAO {
 		return map.isEmpty();
 	}
 
+	@Override
+	public List<Favorite> getAllFavorite(String uid) throws Exception {
+		jdbcUtils.getConnection();
+		List<Favorite> list = new ArrayList<Favorite>();
+		String sql = "select * from favorite where uid = ?";
+		List params = new ArrayList();
+		params.add(uid);
+		List<Map<String, Object>> maps = jdbcUtils.findMoreResult(sql, params);
+		if(! maps.isEmpty()){
+			for(Map<String,Object> map : maps){
+				Favorite f = new Favorite();
+				f.setFurniture_id((int)map.get("furniture_id"));
+				f.setShoper((String)map.get("shoper"));
+				f.setUid((String)map.get("uid"));
+				list.add(f);
+			}
+		}
+		
+		jdbcUtils.releaseConn();
+		return list;
+		
+	}
+
 	
 
 }

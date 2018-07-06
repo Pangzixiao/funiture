@@ -55,8 +55,27 @@
 		</action>
 		
 		<action name="findFromCar" class="controller.CarAction" >
-		    <result name="success">/success.jsp</result>
-		    <result name="empty">/empty.jsp </result>
+		    <result name="success">/showFunituresInCar.jsp</result>
+		    <result name="empty">/empty_car.jsp </result>
+		</action>
+		
+		<action name="findFavorite" class="controller.FavoriteAction" >
+		    <result name="success">/showFunituresInFavorite.jsp</result>
+		    <result name="empty">/empty_favorite.jsp </result>
+		</action>
+		
+		<action name="gettypes" class="controller.MainAction" method="gettypes" >
+		    <result>/selectTypes.jsp</result>
+		</action>
+		
+		<action name="selectByType" class="controller.MainAction" method="selectByType" >
+		    <result>selectByTypeResult.jsp</result>
+		    <result name = "input">/fail.jsp</result>
+		</action>
+		
+		<action name="selectByForm" class="controller.MainAction" method="selectByForm" >
+		    <result>selectByFormResult.jsp</result>
+		    <result name = "input">/fail.jsp</result>
 		</action>
 	</package>
 	<include file="brand.xml" />

@@ -1,12 +1,17 @@
 package dao;
 
+
+import java.util.ArrayList;
+import java.util.List;
+
 import org.junit.Test;
 
-import bean.Favorite;
+import bean.Furniture;
 
 
 public class UtilsTest {
 	FormsDAO formsdao = new FormsDAOImp();
+	BrandDAO branddao = new BrandDAOImp();
 	TypeDAO typedao = new TypeDAOImp();
 	UserDAO userdao = new UserDAOImp();
 	FavoriteDAO favoritedao = new FavoriteDAOImp();
@@ -83,14 +88,39 @@ public class UtilsTest {
 //				System.out.println("商家id"+car.getUid());
 //			}
 //		}
-		Favorite f = new Favorite();
-		f.setFurniture_id(1);
-		f.setShoper("0708");
-		f.setUid("user");
+//		Favorite f = new Favorite();
+//		f.setFurniture_id(1);
+//		f.setShoper("0708");
+//		f.setUid("user");
 //		System.out.println(favoritedao.add(f));
 //		System.out.println(favoritedao.isExit("user"));
 //		System.out.println(favoritedao.del(f));
-		System.out.println(favoritedao.isExit("user"));
+//		System.out.println(favoritedao.isExit("user"));
+//		List<Type> list = typedao.getAllTypes();
+//		for (Type type : list){
+//			System.out.println(type.getC_name());
+//		}
+		
+//		List<String> forms = formsdao.getAllForms();
+//		List<String> forms = branddao.getAllBrands();
+//		for(String s:forms){
+//			System.out.println(s);
+//		}
+		
+//		System.out.println(furnituredao.getAllFurnitureByType("床").size());
+//		System.out.println(detaildao.getAllDetailID("中式").size());
+		System.out.println(furnituredao.getAllFurnitureByDetail(1)==null);
+		List<Integer> ids = detaildao.getAllDetailID("中式");
+		List<Furniture>list = new ArrayList<Furniture>();
+		if (!ids.isEmpty()) {
+			for (int detail_id : ids) {
+				Furniture f = furnituredao.getAllFurnitureByDetail(detail_id);
+				if (f != null){
+					System.out.println(f.getFurniture_name());
+					list.add(f);
+				}
+			}
+		}
 		
 	}
 

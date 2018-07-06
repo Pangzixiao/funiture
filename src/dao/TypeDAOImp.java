@@ -21,6 +21,7 @@ public class TypeDAOImp implements TypeDAO {
 			type.setC_name((String)t.get("c_name"));
 			list.add(type);
 		}
+		System.out.println(list.size());
 		jdbcUtils.releaseConn();
 		return list;
 	}

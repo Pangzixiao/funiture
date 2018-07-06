@@ -28,4 +28,19 @@ public interface FurnitureDAO {
 	 * @throws Exception
 	 */
 	public Furniture getFurniture(String uid,int furniture_id)throws Exception;
+	/**
+	 * 通过类别获得所有商品
+	 * @param type
+	 * @return
+	 * @throws Exception
+	 */
+	public List<Furniture> getAllFurnitureByType(String type)throws Exception;
+	/**
+	 * 通过细节id获得商品
+	 * @param detail_id
+	 * @return
+	 * @throws Exception
+	 */
+	public Furniture getAllFurnitureByDetail(int detail_id)throws Exception;
+	
 }

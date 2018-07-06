@@ -9,11 +9,9 @@ import dao.TypeDAO;
 import dao.TypeDAOImp;
 
 public class TypeAction extends ActionSupport {
-    List<Type>list;
-    TypeDAO dao = new TypeDAOImp();
-    Type type;
-    
-    
+	List<Type> list;
+	TypeDAO dao = new TypeDAOImp();
+	Type type;
 
 	public Type getType() {
 		return type;
@@ -30,20 +28,21 @@ public class TypeAction extends ActionSupport {
 	public void setList(List<Type> list) {
 		this.list = list;
 	}
-    
-    public String execute() throws Exception{
-    	list = dao.getAllTypes();
-    	return SUCCESS;
-    }
-    
-    public String findType() throws Exception{
-    	dao.findTypeById(type);
-    	return SUCCESS;
-    }
-    
-    public String update()throws Exception{
-    	boolean istrue = false;
-    	istrue = dao.update(type);
-    	return istrue ? "success":"fault";
-    }
+
+	public String execute() throws Exception {
+		list = dao.getAllTypes();
+		return SUCCESS;
+	}
+
+	public String findType() throws Exception {
+		dao.findTypeById(type);
+		System.out.println(list.size());
+		return SUCCESS;
+	}
+
+	public String update() throws Exception {
+		boolean istrue = false;
+		istrue = dao.update(type);
+		return istrue ? "success" : "fault";
+	}
 }
