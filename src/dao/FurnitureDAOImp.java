@@ -145,6 +145,35 @@ public class FurnitureDAOImp implements FurnitureDAO {
 		jdbcUtils.releaseConn();
 		return f;
 	}
-	
-	
+
+	@Override
+	public List<Furniture> getAllFurnitureByPrice(double low, double up) throws Exception {
+		jdbcUtils.getConnection();
+		String sql = "select * from furnitures where price > ? and price < ? ";
+		List params = new ArrayList();
+		params.add(low);
+		params.add(up);
+		List<Furniture> list = new ArrayList<Furniture>();
+		List<Map<String, Object>> furnitures = new ArrayList<Map<String, Object>>();
+		furnitures = jdbcUtils.findMoreResult(sql, params);
+		for (Map<String, Object> map : furnitures) {
+			Furniture f = new Furniture();
+			f.setDetail_id((int) map.get("detail_id"));
+			f.setFurniture_id((int) map.get("furniture_id"));
+			f.setFurniture_name((String) map.get("furniture_name"));
+			f.setPrice((double) map.get("price"));
+			f.setSalevolume((int) map.get("salesvolume"));
+			f.setType((String) map.get("type"));
+			f.setUid((String) map.get("uid"));
+			String src = (String) map.get("pic_src");
+			if (src.isEmpty()) {
+				f.setPic_src("empty.png");
+			} else {
+				f.setPic_src((String) map.get("pic_src"));
+			}
+			list.add(f);
+		}
+		jdbcUtils.releaseConn();
+		return list;
+	}
 }

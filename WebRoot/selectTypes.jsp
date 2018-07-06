@@ -39,37 +39,37 @@
     <p>品牌：&nbsp&nbsp&nbsp
     <s:iterator value="brands" var="brand">
       
-      <s:url var="selectBrandUrl" action="">
-         <s:param name="" value="#brand"/>
+      <s:url var="selectBrandUrl" action="selectByBrand">
+         <s:param name="brand_string" value="#brand"/>
       </s:url>
       <a href="${selectBrandUrl}"><s:property value="#brand"/></a>&nbsp
     
     </s:iterator>
     <br>
     
-     <p>价格区间  ： <s:url var="price1" action="">
+     <p>价格区间  ： <s:url var="price1" action="selectByPrice">
          <s:param name="minprice" value="0"/>
          <s:param name="maxprice" value="999"/>
       </s:url>
       <a href="${price1}">0-999</a>&nbsp
-      <s:url var="price1" action="">
+      <s:url var="price2" action="selectByPrice">
          <s:param name="minprice" value="1000"/>
          <s:param name="maxprice" value="3999"/>
       </s:url>
-      <a href="${price1}">1000-3999</a>&nbsp
-      <s:url var="price1" action="">
+      <a href="${price2}">1000-3999</a>&nbsp
+      <s:url var="price3" action="selectByPrice">
          <s:param name="minprice" value="4000"/>
          <s:param name="maxprice" value="6999"/>
       </s:url>
-      <a href="${price1}">4000-6999</a>&nbsp
-      <s:url var="price1" action="">
+      <a href="${price3}">4000-6999</a>&nbsp
+      <s:url var="price4" action="selectByPrice">
          <s:param name="minprice" value="7000"/>
          <s:param name="maxprice" value="9999"/>
       </s:url>
-      <a href="${price1}">7000-9999</a>&nbsp
+      <a href="${price4}">7000-9999</a>&nbsp
       <div>
-      <s:form action="" method="">
-      <s:textfield size="7" name="minprice"/><s:textfield size="7" name="maxprice"/>
+      <s:form action="selectByPrice" method="post">
+      <s:textfield size="7" name="minprice" lable="low"/><s:textfield size="7" name="maxprice" lable="up"/>
       <s:submit value="确定"/>
       </s:form></div>
   </body>

@@ -64,11 +64,11 @@ public class DetailDAOImp implements DetailDAO {
 	}
 
 	@Override
-	public List<Integer> getAllDetailID(String form) throws Exception {
-		String sql = "select * from detail where form = ?";
+	public List<Integer> getAllDetailID(String key , String value) throws Exception {
+		String sql = "select * from detail where "+key+" = ?";
 		jdbcUtils.getConnection();
     	List params = new ArrayList();
-    	params.add(form);
+    	params.add(value);
     	List<Map<String,Object>>maps = jdbcUtils.findMoreResult(sql, params);
     	List<Integer> list = new ArrayList<Integer>();
     	if(!maps.isEmpty()){

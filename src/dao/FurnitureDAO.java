@@ -42,5 +42,14 @@ public interface FurnitureDAO {
 	 * @throws Exception
 	 */
 	public Furniture getAllFurnitureByDetail(int detail_id)throws Exception;
+	/**
+	 * 
+	 * 获得价格区间内的所有商品
+	 * @param low
+	 * @param up
+	 * @return
+	 * @throws Exception
+	 */
+	public List<Furniture> getAllFurnitureByPrice(double low,double up)throws Exception;
 	
 }

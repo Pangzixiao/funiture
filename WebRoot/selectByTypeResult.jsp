@@ -21,7 +21,7 @@
       
       <s:url var="selectTypesUrl" action="selectByType">
          <s:param name="type.c_id" value="#type.getC_id()"/>
-         <s:param name="type.c_id" value="#type.getC_name()"/>
+         <s:param name="type.c_name" value="#type.getC_name()"/>
       </s:url>
       <a href="${selectTypesUrl}"><s:property value="#type.c_name"/></a>&nbsp
     
@@ -29,9 +29,10 @@
     <br>
     <p>风格：&nbsp&nbsp&nbsp
     <s:iterator value="formlist" var="form">
-      
-      <s:url var="selectFormsUrl" action="">
-         <s:param name="" value="#form"/>
+      <s:url var="selectFormsUrl" action="selectByFormType">
+         <s:param name="type.c_id" value="%{type.c_id }"/>
+         <s:param name="type.c_name" value="%{type.c_name}"/>
+         <s:param name="form_string" value="#form.form_name"/>
       </s:url>
       <a href="${selectFormsUrl}"><s:property value="#form.form_name"/></a>&nbsp
     
@@ -40,8 +41,10 @@
     <p>品牌：&nbsp&nbsp&nbsp
     <s:iterator value="brandlist" var="brand">
       
-      <s:url var="selectBrandUrl" action="">
-         <s:param name="" value="#brand"/>
+      <s:url var="selectBrandUrl" action="selectByBrandType">
+      <s:param name="type.c_id" value="%{type.c_id }"/>
+         <s:param name="type.c_name" value="%{type.c_name}"/>
+         <s:param name="brand_string" value="#brand.brand_name"/>
       </s:url>
       <a href="${selectBrandUrl}"><s:property value="#brand.brand_name"/></a>&nbsp
     
@@ -72,25 +75,25 @@
     </td>
     
     <td>
-    <s:url var="changePicUrl" action="">
-         <s:param name="comment.furniture_id" value="#row.furniture_id"/>
-         <s:param name="comment.shoper" value="row.uid"/>
+    <s:url var="addInCarUrl" action="">
+         <s:param name="car_furniture.f_id" value="#row.furniture_id"/>
+         <s:param name="car_furniture.shoper" value="row.uid"/>
       </s:url>
       <a href="${showCommentUrl}">加入购物车</a>
     </td>
     
     <td>
-    <s:url var="saveurl" action="">
-         <s:param name="comment.furniture_id" value="#row.furniture_id"/>
-         <s:param name="comment.shoper" value="row.uid"/>
+    <s:url var="addInFavoriteUrl" action="">
+         <s:param name="favorite.furniture_id" value="#row.furniture_id"/>
+         <s:param name="favorite.shoper" value="row.uid"/>
       </s:url>
       <a href="${saveurl}">收藏</a>
     </td>
     
     <td>
     <s:url var="showPicUrl" action="">
-         <s:param name="comment.furniture_id" value="#row.furniture_id"/>
-         <s:param name="comment.shoper" value="row.uid"/>
+         <s:param name="furniture_id" value="#row.furniture_id"/>
+         <s:param name="shoper" value="row.uid"/>
       </s:url>
       <a href="${showCommentUrl}">查看图片</a>
     </td>

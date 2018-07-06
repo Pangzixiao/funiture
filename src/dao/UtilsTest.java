@@ -109,17 +109,23 @@ public class UtilsTest {
 		
 //		System.out.println(furnituredao.getAllFurnitureByType("床").size());
 //		System.out.println(detaildao.getAllDetailID("中式").size());
-		System.out.println(furnituredao.getAllFurnitureByDetail(1)==null);
-		List<Integer> ids = detaildao.getAllDetailID("中式");
-		List<Furniture>list = new ArrayList<Furniture>();
-		if (!ids.isEmpty()) {
-			for (int detail_id : ids) {
-				Furniture f = furnituredao.getAllFurnitureByDetail(detail_id);
-				if (f != null){
-					System.out.println(f.getFurniture_name());
-					list.add(f);
-				}
-			}
+//		System.out.println(furnituredao.getAllFurnitureByDetail(1)==null);
+//		List<Integer> ids = detaildao.getAllDetailID("brand","宜家");
+//		List<Furniture>list = new ArrayList<Furniture>();
+//		if (!ids.isEmpty()) {
+//			for (int detail_id : ids) {
+//				Furniture f = furnituredao.getAllFurnitureByDetail(detail_id);
+//				if (f != null){
+//					System.out.println(f.getFurniture_name());
+//					list.add(f);
+//				}
+//			}
+//		}
+		
+		
+		List<Furniture> list = furnituredao.getAllFurnitureByPrice(0, 999);
+		for(Furniture ff:list){
+			System.out.println(ff.getFurniture_name());
 		}
 		
 	}

@@ -37,10 +37,10 @@ public interface DetailDAO {
 	
 	public boolean findById(Detail detail)throws Exception;
 	/**
-	 * 查询某个风格的所有细节id
-	 * @param form
+	 * 查询某个风格或品牌的所有细节id 其中key的取值为form 或  brand
+	 * @param
 	 * @return
 	 * @throws Exception
 	 */
-	public List<Integer> getAllDetailID(String form)throws Exception;
+	public List<Integer> getAllDetailID(String key ,String value)throws Exception;
 }

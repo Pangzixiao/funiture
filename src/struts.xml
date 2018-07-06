@@ -74,7 +74,27 @@
 		</action>
 		
 		<action name="selectByForm" class="controller.MainAction" method="selectByForm" >
-		    <result>selectByFormResult.jsp</result>
+		    <result>selectByOtherResult.jsp</result>
+		    <result name = "input">/fail.jsp</result>
+		</action>
+		
+		<action name="selectByBrand" class="controller.MainAction" method="selectByBrand" >
+		    <result>selectByOtherResult.jsp</result>
+		    <result name = "input">/fail.jsp</result>
+		</action>
+		
+		<action name="selectByPrice" class="controller.MainAction" method="selectByPrice" >
+		    <result>selectByOtherResult.jsp</result>
+		    <result name = "input">/fail.jsp</result>
+		</action>
+		
+		<action name="selectByFormType" class="controller.MainAction" method="selectByFormType" >
+		    <result>selectByTypeResult.jsp</result>
+		    <result name = "input">/fail.jsp</result>
+		</action>
+		
+		<action name="selectByBrandType" class="controller.MainAction" method="selectByBrandType" >
+		    <result>selectByTypeResult.jsp</result>
 		    <result name = "input">/fail.jsp</result>
 		</action>
 	</package>

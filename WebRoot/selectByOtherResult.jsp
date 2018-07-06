@@ -21,7 +21,7 @@
       
       <s:url var="selectTypesUrl" action="selectByType">
          <s:param name="type.c_id" value="#type.getC_id()"/>
-         <s:param name="type.c_id" value="#type.getC_name()"/>
+         <s:param name="type.c_name" value="#type.getC_name()"/>
       </s:url>
       <a href="${selectTypesUrl}"><s:property value="#type.c_name"/></a>&nbsp
     
@@ -30,8 +30,8 @@
     <p>风格：&nbsp&nbsp&nbsp
     <s:iterator value="forms" var="form">
       
-      <s:url var="selectFormsUrl" action="">
-         <s:param name="" value="#form"/>
+      <s:url var="selectFormsUrl" action="selectByForm">
+         <s:param name="form_string" value="#form"/>
       </s:url>
       <a href="${selectFormsUrl}"><s:property value="#form"/></a>&nbsp
     
@@ -40,8 +40,8 @@
     <p>品牌：&nbsp&nbsp&nbsp
     <s:iterator value="brands" var="brand">
       
-      <s:url var="selectBrandUrl" action="">
-         <s:param name="" value="#brand"/>
+      <s:url var="selectBrandUrl" action="selectByBrand">
+         <s:param name="brand_string" value="#brand"/>
       </s:url>
       <a href="${selectBrandUrl}"><s:property value="#brand"/></a>&nbsp
     
