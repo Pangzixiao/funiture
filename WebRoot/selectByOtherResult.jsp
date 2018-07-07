@@ -73,18 +73,18 @@
     
     <td>
     <s:url var="addInCarUrl" action="addInCar">
-         <s:param name="furniture.furniture_id" value="#row.furniture_id"/>
-         <s:param name="furniture.uid" value="#row.uid"/>
+         <s:param name="id" value="#row.furniture_id"/>
+         <s:param name="car_furniture.shoper" value="#row.uid"/>
       </s:url>
       <a href="${addInCarUrl}">加入购物车</a>
     </td>
     
     <td>
-    <s:url var="addInFavoriteUrl" action="">
-         <s:param name="favorite.furniture_id" value="#row.furniture_id"/>
-         <s:param name="favorite.shoper" value="row.uid"/>
+    <s:url var="addInFavoriteUrl" action="addInFavorite">
+         <s:param name="id" value="#row.furniture_id"/>
+         <s:param name="favorite.shoper" value="#row.uid"/>
       </s:url>
-      <a href="${addInFavoriteUrl}">收藏</a>
+      <a href="${addInFavoriteUrl}">收藏 </a>
     </td>
     
     <td>

@@ -14,45 +14,120 @@ import dao.FurnitureDAOImp;
 
 public class CarAction extends ActionSupport {
 	List<Furniture> list = new ArrayList<Furniture>();
+	int id;
 
 	public List<Furniture> getList() {
 		return list;
 	}
 
+	Car_Furniture car_furniture;
 	FurnitureDAO dao = new FurnitureDAOImp();
+
+	public void setCar_furniture(Car_Furniture car_furniture) {
+		this.car_furniture = car_furniture;
+	}
+
 	
-    //判断用户是否有购物车，没有新加入一个购物车
-	private List<Car_Furniture> getCar(){
+	
+	public int getId() {
+		return id;
+	}
+
+
+
+	public void setId(int id) {
+		this.id = id;
+	}
+
+
+
+	// 判断用户是否有购物车，没有新加入一个购物车
+	private List<Car_Furniture> getCar() {
 		Map session = ActionContext.getContext().getSession();
-		List<Car_Furniture> cars = (List<Car_Furniture>)session.get("car");
-		if(cars==null){
+		List<Car_Furniture> cars = (List<Car_Furniture>) session.get("car");
+		if (cars == null) {
 			System.out.println("用户没有购物车");
 			cars = new ArrayList<Car_Furniture>();
 			session.put("car", cars);
 		}
 		return cars;
 	}
-	
-	public String execute()throws Exception{
+
+	public String execute() throws Exception {
 		List<Car_Furniture> cars = getCar();
-		if(cars.isEmpty()){
+		if (cars.isEmpty()) {
 			System.out.println("购物车为空");
 			return "empty";
-		}else{
-			for(Car_Furniture car : cars ){
+		} else {
+			for (Car_Furniture car : cars) {
 				Furniture ftemp = dao.getFurniture(car.getShoper(), car.getF_id());
-				System.out.println("当前家具id:"+ftemp.getFurniture_id());
-				System.out.println("当前家具商家:"+ftemp.getUid());
-				if(ftemp != null ){
+				if (ftemp != null) {
 					list.add(ftemp);
 				}
 			}
-			if(list.isEmpty()){
+			if (list.isEmpty()) {
 				System.out.println("购物车为空");
 				return "empty";
-			}
-			else
+			} else
 				return "success";
 		}
+	}
+
+	private String getUid() {
+		Map session = ActionContext.getContext().getSession();
+		Object o = session.get("user");
+		if (o == null) {
+			return null;
+		} else {
+			return (String) o;
+		}
+	}
+
+	public String addInCar() throws Exception {
+		boolean isTrue = false;
+		Map session = ActionContext.getContext().getSession();
+		Object o = session.get("user");
+		if (o != null ) {
+			String uid = (String)o;
+			car_furniture.setF_id(id);
+			session = ActionContext.getContext().getSession();
+			List<Car_Furniture> cars = (List<Car_Furniture>) session.get("car");
+			if (cars==null) {
+				cars = new ArrayList<Car_Furniture>();
+			}
+			cars.add(car_furniture);
+			session.put("car", cars);
+			System.out.println("添加到成功购物车");
+			
+			isTrue = true;
+		}
+		return isTrue ? "success" : "fail";
+	}
+	
+	public String removeFromCar() throws Exception {
+		boolean isTrue = false;
+
+		Map session = ActionContext.getContext().getSession();
+		List<Car_Furniture> cars = (List<Car_Furniture>) session.get("car");
+		car_furniture.setF_id(id);
+		System.out.println("uid:"+car_furniture.getShoper()+"  f_id:"+car_furniture.getF_id());
+		List<Car_Furniture> newcars= new ArrayList<Car_Furniture>();
+		if (cars != null) {
+			for (Car_Furniture car : cars) {
+				System.out.println("caruid:"+car.getShoper()+"  carf_id:"+car.getF_id());
+				
+				if (!car.equals(car_furniture)) {
+					newcars.add(car);
+				}
+			}
+			System.out.println("新购物车中商品的数量是:"+newcars.size());
+			session.put("car", newcars);
+			isTrue = true;
+		}else{
+			cars = new ArrayList<Car_Furniture>();
+			session.put("car", cars);
+		}
+
+		return isTrue ? "success" : "fail";
 	}
 }

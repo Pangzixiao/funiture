@@ -51,5 +51,9 @@ public interface FurnitureDAO {
 	 * @throws Exception
 	 */
 	public List<Furniture> getAllFurnitureByPrice(double low,double up)throws Exception;
-	
+	/**
+	 * 通过商家名称和商品号更改销售量
+	 * 
+	 */
+	public boolean updateSaleVolumeById(double salesvolume,int furniture_id,String shoper)throws Exception;
 }

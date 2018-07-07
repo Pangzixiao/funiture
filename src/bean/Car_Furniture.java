@@ -15,5 +15,13 @@ public class Car_Furniture {
 	public void setShoper(String shoper) {
 		this.shoper = shoper;
 	}
+	@Override
+	public boolean equals(Object obj) {
+		if(!(obj instanceof Car_Furniture) ){
+			return false;
+		} 
+		Car_Furniture f = (Car_Furniture)obj;
+		return f.getF_id()== this.f_id && f.getShoper().equals(this.shoper);
+	}
     
 }

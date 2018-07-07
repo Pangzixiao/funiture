@@ -1,12 +1,9 @@
 package dao;
 
 
-import java.util.ArrayList;
-import java.util.List;
-
 import org.junit.Test;
 
-import bean.Furniture;
+import bean.Comment;
 
 
 public class UtilsTest {
@@ -17,6 +14,8 @@ public class UtilsTest {
 	FavoriteDAO favoritedao = new FavoriteDAOImp();
 	FurnitureDAO furnituredao = new FurnitureDAOImp();
 	DetailDAO detaildao = new DetailDAOImp();
+	OrderDAO orderdao = new OrderDAOImp();
+	CommentDAO commentdao = new CommentDAOImp();
 
 	
 
@@ -123,11 +122,35 @@ public class UtilsTest {
 //		}
 		
 		
-		List<Furniture> list = furnituredao.getAllFurnitureByPrice(0, 999);
-		for(Furniture ff:list){
-			System.out.println(ff.getFurniture_name());
-		}
+//		List<Furniture> list = furnituredao.getAllFurnitureByPrice(0, 999);
+//		for(Furniture ff:list){
+//			System.out.println(ff.getFurniture_name());
 		
+		
+//		}
+//		Favorite favorite = new Favorite();
+//		favorite.setFurniture_id(1);
+//		favorite.setShoper("shoper");
+//		favorite.setUid("user");
+//		favoritedao.add(favorite);
+		
+//		Order order = new Order();
+//		order.setCost(1);
+//		order.setOrder_id(1);
+//		order.setCount(1);
+//		order.setFurniture_id(11);
+//		Date date = new GregorianCalendar(2000,0,1).getTime();
+//		order.setPaydate(date);
+//		order.setShoper("shop");
+//		order.setUsername("user");
+//		System.out.println(orderdao.add(order));
+//		System.out.println(furnituredao.updateSaleVolumeById(3, 4, "0708"));
+		Comment comment = new Comment();
+		comment.setComment("11111111111111111111111111111");
+		comment.setFurniture_id(1);
+		comment.setShoper("shoper");
+		comment.setUser("user");
+		System.out.println(commentdao.add(comment));
 	}
 
 }

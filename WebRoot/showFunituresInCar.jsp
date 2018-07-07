@@ -23,6 +23,8 @@
       <td><s:property value="#row.furniture_name"/>
       <td><s:property value="#row.price"/>
       <td><s:property value="#row.salevolume"/>
+      <td><s:property value="#row.furniture_id"/>
+      <td><s:property value="#row.uid"/>
     
     <td>
       <s:url var="showInfoUrl" action="showDetailByid">
@@ -39,11 +41,20 @@
     </td>
     
     <td>
-    <s:url var="changePicUrl" action="">
-         <s:param name="comment.furniture_id" value="#row.furniture_id"/>
-         <s:param name="comment.shoper" value="row.uid"/>
+    <s:url var="removeFromCarUrl" action="removeFromCar">
+         <s:param name="id" value="#row.furniture_id"/>
+         <s:param name="car_furniture.shoper" value="#row.uid"/>
       </s:url>
-      <a href="${showCommentUrl}">从购物车中移除</a>
+      <a href="${removeFromCarUrl}">从购物车中移除</a>
+    </td>
+    
+    <td>
+    <s:url var="payUrl" action="pay">
+         <s:param name="order.furniture_id" value="#row.furniture_id"/>
+         <s:param name="name" value="#row.furniture_name"/>
+         <s:param name="order.shoper" value="#row.uid"/>
+      </s:url>
+      <a href="${payUrl}">购买</a>
     </td>
     
     <td>

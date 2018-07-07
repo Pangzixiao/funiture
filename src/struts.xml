@@ -103,9 +103,49 @@
 		    <result name = "input">/fail.jsp</result>
 		</action>
 		
-		<action name="addInCar" class="controller.MainAction" method="addInCar" >
+		<action name="addInCar" class="controller.CarAction" method="addInCar" >
 		    <result name="success" type="redirect">/user.jsp</result>
 		    <result name="fail" type="redirect">/fail.jsp</result>
+		</action>
+		
+		<action name="removeFromCar" class="controller.CarAction" method="removeFromCar" >
+		    <result name="success" type="redirect">/user.jsp</result>
+		    <result name="fail" type="redirect">/fail.jsp</result>
+		</action>
+		
+		<action name="addInFavorite" class="controller.FavoriteAction" method="addInFavorite" >
+		    <result name="success" type="redirect">/user.jsp</result>
+		    <result name="fail" type="redirect">/fail.jsp</result>
+		</action>
+		
+		<action name="removeFromFavorite" class="controller.FavoriteAction" method="removeFromFavorite" >
+		    <result name="success" type="redirect">/user.jsp</result>
+		    <result name="fail" type="redirect">/fail.jsp</result>
+		</action>
+		
+		
+		<action name="pay" class="controller.OrderAction" method="pay" >
+		    <result name="success" >/paying_count.jsp</result>
+		    <result name="fail" type="redirect">/fail.jsp</result>
+		</action>
+		
+		<action name="count_fee" class="controller.OrderAction" method="count_fee" >
+		    <result name="success" >/paying.jsp</result>
+		    <result name="fail" type="redirect">/fail.jsp</result>
+		</action>
+		
+		<action name="addOrder" class="controller.OrderAction" method="addOrder" >
+		    <result name="success" >/paying_suc.jsp</result>
+		    <result name="fail" type="redirect">/fail.jsp</result>
+		</action>
+		
+		<action name="findcomment" class="controller.CommentAction" method="findcomment" >
+		    <result>/addComment.jsp</result>
+		</action>
+		
+		<action name="addComment" class="controller.CommentAction" method="addComment" >
+		    <result name="success">/addcomment_suc.jsp</result>
+		    <result name="fail">/fail.jsp</result>
 		</action>
 	</package>
 	<include file="brand.xml" />

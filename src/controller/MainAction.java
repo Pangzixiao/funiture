@@ -228,37 +228,5 @@ public class MainAction extends ActionSupport {
 		}
 		return SUCCESS;
 	}
-
-	private String getUid() {
-		Map session = ActionContext.getContext().getSession();
-		Object o = session.get("user");
-		if (o == null) {
-			return null;
-		} else {
-			return (String) o;
-		}
-	}
-
-	public String addInCar() throws Exception {
-		boolean isTrue = false;
-		Map session = ActionContext.getContext().getSession();
-		Object o = session.get("user");
-		if (o != null ) {
-			String uid = (String)o;
-			Car_Furniture car = new Car_Furniture();
-			car.setF_id(furniture.getFurniture_id());
-			car.setShoper(furniture.getUid());
-			session = ActionContext.getContext().getSession();
-			List<Car_Furniture> cars = (List<Car_Furniture>) session.get("car");
-			if (cars==null) {
-				cars = new ArrayList<Car_Furniture>();
-			}
-			cars.add(car);
-			session.put("car", cars);
-			System.out.println("添加到成功购物车");
-			
-			isTrue = true;
-		}
-		return isTrue ? "success" : "fail";
-	}
+	
 }

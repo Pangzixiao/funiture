@@ -39,11 +39,19 @@
     </td>
     
     <td>
-    <s:url var="changePicUrl" action="">
-         <s:param name="comment.furniture_id" value="#row.furniture_id"/>
-         <s:param name="comment.shoper" value="row.uid"/>
+    <td>
+    <s:url var="removeFromFavoriteUrl" action="removeFromFavorite">
+         <s:param name="id" value="#row.furniture_id"/>
+         <s:param name="favorite.shoper" value="#row.uid"/>
       </s:url>
-      <a href="${showCommentUrl}">从收藏夹中移除</a>
+      <a href="${removeFromFavoriteUrl}">从收藏夹中移除</a>
+    </td>
+    <td>
+    <s:url var="addInCarUrl" action="addInCar">
+         <s:param name="id" value="#row.furniture_id"/>
+         <s:param name="car_furniture.shoper" value="#row.uid"/>
+      </s:url>
+      <a href="${addInCarUrl}">添加到购物车</a>
     </td>
     
     <td>
@@ -53,6 +61,9 @@
       </s:url>
       <a href="${showCommentUrl}">查看图片</a>
     </td>
+    
+    
+    
     </tr>
     </s:iterator>
     

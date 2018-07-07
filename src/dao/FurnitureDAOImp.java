@@ -176,4 +176,20 @@ public class FurnitureDAOImp implements FurnitureDAO {
 		jdbcUtils.releaseConn();
 		return list;
 	}
+
+	@Override
+	public boolean updateSaleVolumeById(double salesvolume,int furniture_id,String shoper) throws Exception {
+		String sql = "update furnitures set salesvolume = ? where furniture_id= ? and uid = ?";
+		boolean istrue = false;
+		jdbcUtils.getConnection();
+		List params = new ArrayList();
+		params.add(salesvolume);
+		params.add(furniture_id);
+		params.add(shoper);
+		istrue = jdbcUtils.updateByPreparedStatement(sql, params);
+		jdbcUtils.releaseConn();
+		return istrue;
+	}
+	
+	
 }
