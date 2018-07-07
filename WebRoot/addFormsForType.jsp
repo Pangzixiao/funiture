@@ -12,11 +12,11 @@
 	-->
 <s:head/>
   </head>
-  
+  <s:debug/>
   <body>
     <s:form action="add_form" method ="post">
-       <s:hidden key = "brand.c_id"/>
-       <s:textfield key="brand.brand_name" label="风格名"/><br>
+       <s:select name ="forms.c_id" list="%{types}"  listKey="c_id" listValue="c_name" label="分类"></s:select>
+       <s:textfield key="forms.form_name" label="风格名"/><br>
        <s:submit/>
     </s:form>
     

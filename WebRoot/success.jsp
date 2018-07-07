@@ -21,7 +21,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   <s:debug/>
   <b>成功</b>
-    <a href="showTypes">开始</a>
   </body>
 </html>
 

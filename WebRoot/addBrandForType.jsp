@@ -15,7 +15,7 @@
   
   <body>
     <s:form action="add_brand" method ="post">
-       <s:hidden key = "brand.c_id"/>
+       <s:select name ="brand.c_id" list="%{types}"  listKey="c_id" listValue="c_name" label="分类"></s:select>
        <s:textfield key="brand.brand_name" label="品牌名"/><br>
        <s:submit/>
     </s:form>

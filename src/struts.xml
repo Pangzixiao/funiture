@@ -14,7 +14,7 @@
 		</action>
 		
 		<action name="regist" class="controller.UserAction" method="addUser">
-			<result name="success">/user.jsp</result>
+			<result name="success">/index.jsp</result>
 			<result name="fail">/fail.jsp</result>
 		</action>
 
@@ -42,11 +42,11 @@
 		</action>
 		
 		<action name="add_form" class="controller.FormsAction" method = "addForm">
-		    <result name="success" >/success.jsp</result>
+		    <result name="success" type = "redirect">/admin.jsp</result>
 		    <result name="fault">/fail.jsp</result>
 		</action>
 		
-		<action name="find_form" class="controller.FormsAction" method = "findForm">
+		<action name="addFormsForType" class="controller.FormsAction" method="gettypes" >
 		    <result>/addFormsForType.jsp</result>
 		</action>
 		
@@ -96,6 +96,16 @@
 		<action name="selectByBrandType" class="controller.MainAction" method="selectByBrandType" >
 		    <result>selectByTypeResult.jsp</result>
 		    <result name = "input">/fail.jsp</result>
+		</action>
+		
+		<action name="selectByPriceType" class="controller.MainAction" method="selectByPriceType" >
+		    <result>selectByTypeResult.jsp</result>
+		    <result name = "input">/fail.jsp</result>
+		</action>
+		
+		<action name="addInCar" class="controller.MainAction" method="addInCar" >
+		    <result name="success" type="redirect">/user.jsp</result>
+		    <result name="fail" type="redirect">/fail.jsp</result>
 		</action>
 	</package>
 	<include file="brand.xml" />

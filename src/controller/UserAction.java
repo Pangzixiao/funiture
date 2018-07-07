@@ -30,7 +30,11 @@ public class UserAction extends ActionSupport {
 	public void setType(int type) {
 		this.type = type;
 	}
-
+    /**
+     * µÇÂ¼
+     * @return
+     * @throws Exception
+     */
 	public String login() throws Exception {
 		boolean isTrue;
 		if (type == 0) {
@@ -62,6 +66,11 @@ public class UserAction extends ActionSupport {
 		return "fail";
 	}
 
+	/**
+	 * ×¢²á
+	 * @return
+	 * @throws Exception
+	 */
 	public String addUser() throws Exception {
 		boolean isTrue = false;
 		if (type == 0) {

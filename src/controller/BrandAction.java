@@ -6,17 +6,26 @@ import java.util.List;
 import com.opensymphony.xwork2.ActionSupport;
 
 import bean.Brand;
+import bean.Type;
 import dao.BrandDAO;
 import dao.BrandDAOImp;
+import dao.TypeDAO;
+import dao.TypeDAOImp;
 import dao.Utils;
 
 public class BrandAction extends ActionSupport {
 	Brand brand;
 	List<Brand> list = new ArrayList<Brand>();
+	List<Type> types;
 	BrandDAO dao = new BrandDAOImp();
 	
 	public Brand getBrand() {
 		return brand;
+	}
+    
+
+	public List<Type> getTypes() {
+		return types;
 	}
 
 
@@ -56,5 +65,10 @@ public class BrandAction extends ActionSupport {
 		boolean isTrue = false;
         isTrue = dao.add(brand);
 		return isTrue? "success":"fault";
+	}
+	public String gettypes() throws Exception{
+		TypeDAO typedao = new TypeDAOImp();
+		types = typedao.getAllTypes();
+		return SUCCESS;
 	}
 }

@@ -15,7 +15,7 @@
   </head>
   
   <body>
-    <table style="border:1px solid green"><tr><td>forms_name
+    <table style="border:1px solid green"><tr><td>typeid<td>forms_name
     <s:iterator value="list" var="row">
     <tr>
       <td><s:property value="#row.c_id"/>
@@ -30,12 +30,6 @@
     </td>
     </tr>
     </s:iterator>
-    
-    <s:url var="addBrandUrl" action="find_brand">
-         <s:param name="brand.c_d" value="#row.c_id"/>
-         <s:param name="brand.brand_name" value="row.brand_name"/>
-      </s:url>
-      <a href="${addBrandUrl}">添加</a>
   </body>
 </html>
 

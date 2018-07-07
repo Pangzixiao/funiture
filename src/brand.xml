@@ -15,11 +15,11 @@
 		</action>
 		
 		<action name="add_brand" class="controller.BrandAction" method = "addBrand">
-		    <result name="success" >/success.jsp</result>
+		    <result name="success" type="redirect" >/admin.jsp</result>
 		    <result name="fault">/fail.jsp</result>
 		</action>
 		
-		<action name="find_brand" class="controller.BrandAction" method = "findBrand">
+		<action name="addBrandForType" class="controller.BrandAction" method = "gettypes">
 		    <result>/addBrandForType.jsp</result>
 		</action>
   </package> 

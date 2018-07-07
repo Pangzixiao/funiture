@@ -3,6 +3,7 @@ package dao;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
+
 import bean.Type;
 
 public class TypeDAOImp implements TypeDAO {

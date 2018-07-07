@@ -1,5 +1,6 @@
 package controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
@@ -14,11 +15,17 @@ import dao.FurnitureDAO;
 import dao.FurnitureDAOImp;
 
 public class FavoriteAction extends ActionSupport {
-    List<Furniture>list;
+	List<Furniture> list = new ArrayList<Furniture>();
     FurnitureDAO furnituredao = new FurnitureDAOImp();
     FavoriteDAO dao = new FavoriteDAOImp();
     
-    private List<Favorite> getAllFavorite() throws Exception{
+    
+    
+    public List<Furniture> getList() {
+		return list;
+	}
+
+	private List<Favorite> getAllFavorite() throws Exception{
     	Map session = ActionContext.getContext().getSession();
     	String uid = (String)session.get("user");
     	List<Favorite> lists = dao.getAllFavorite(uid);

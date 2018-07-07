@@ -36,7 +36,6 @@ public class TypeAction extends ActionSupport {
 
 	public String findType() throws Exception {
 		dao.findTypeById(type);
-		System.out.println(list.size());
 		return SUCCESS;
 	}
 

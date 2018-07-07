@@ -15,7 +15,7 @@
   </head>
   
   <body>
-    <table style="border:1px solid green"><tr><td>forms_name
+    <table style="border:1px solid green"><tr><td>formid<td>forms_name
     <s:iterator value="list" var="row">
     <tr>
       <td><s:property value="#row.c_id"/>
@@ -31,11 +31,7 @@
     </tr>
     </s:iterator>
     
-    <s:url var="addFormUrl" action="find_form">
-         <s:param name="forms.c_d" value="#row.c_id"/>
-         <s:param name="forms.form_name" value="row.form_name"/>
-      </s:url>
-      <a href="${addFormUrl}">添加</a>
+    
   </body>
 </html>
 

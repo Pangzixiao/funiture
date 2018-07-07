@@ -21,6 +21,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   <s:debug/>
   <b>管理员登录成功</b>
+  <a href="showTypes">显示所有分类</a>
+  <a href="addFormsForType">添加风格</a>
+  <a href="addBrandForType">添加品牌</a>
   </body>
 </html>
 

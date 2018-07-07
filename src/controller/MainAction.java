@@ -2,10 +2,13 @@ package controller;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Map;
 
+import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 import bean.Brand;
+import bean.Car_Furniture;
 import bean.Forms;
 import bean.Furniture;
 import bean.Type;
@@ -34,12 +37,24 @@ public class MainAction extends ActionSupport {
 	Forms form;
 	// 可能是常用值
 	Type type = new Type();
-	double minprice,maxprice;
-	String form_string,brand_string;
+	double minprice, maxprice;
+	String form_string, brand_string, sort_type = new String("1");
 	List<Furniture> furnitures;
+	Furniture furniture;
 	DetailDAO detaildao = new DetailDAOImp();
 
-	
+	public void setSort_type(String sort_type) {
+		this.sort_type = sort_type;
+	}
+
+	public Furniture getFurniture() {
+		return furniture;
+	}
+
+	public void setFurniture(Furniture furniture) {
+		this.furniture = furniture;
+	}
+
 	public void setMinprice(double minprice) {
 		this.minprice = minprice;
 	}
@@ -55,7 +70,7 @@ public class MainAction extends ActionSupport {
 	public void setForm_string(String form_string) {
 		this.form_string = form_string;
 	}
-    
+
 	public String getBrand_string() {
 		return brand_string;
 	}
@@ -124,12 +139,12 @@ public class MainAction extends ActionSupport {
 		types = typedao.getAllTypes();
 		forms = formsdao.getAllForms();
 		brands = branddao.getAllBrands();
-		List<Integer> ids = detaildao.getAllDetailID("form",form_string);
+		List<Integer> ids = detaildao.getAllDetailID("form", form_string);
 		furnitures = new ArrayList<Furniture>();
 		if (!ids.isEmpty()) {
 			for (int detail_id : ids) {
 				Furniture f = furnituredao.getAllFurnitureByDetail(detail_id);
-				if (f != null){
+				if (f != null) {
 					furnitures.add(f);
 				}
 			}
@@ -141,19 +156,19 @@ public class MainAction extends ActionSupport {
 		types = typedao.getAllTypes();
 		forms = formsdao.getAllForms();
 		brands = branddao.getAllBrands();
-		List<Integer> ids = detaildao.getAllDetailID("brand",brand_string);
+		List<Integer> ids = detaildao.getAllDetailID("brand", brand_string);
 		furnitures = new ArrayList<Furniture>();
 		if (!ids.isEmpty()) {
 			for (int detail_id : ids) {
 				Furniture f = furnituredao.getAllFurnitureByDetail(detail_id);
-				if (f != null){
+				if (f != null) {
 					furnitures.add(f);
 				}
 			}
 		}
 		return SUCCESS;
 	}
-	
+
 	public String selectByPrice() throws Exception {
 		types = typedao.getAllTypes();
 		forms = formsdao.getAllForms();
@@ -161,43 +176,89 @@ public class MainAction extends ActionSupport {
 		furnitures = furnituredao.getAllFurnitureByPrice(minprice, maxprice);
 		return SUCCESS;
 	}
-	
+
 	public String selectByFormType() throws Exception {
 		types = typedao.getAllTypes();
 		Utils utils = new Utils();
 		formlist = utils.getAllForms(type.getC_id());
 		brandlist = utils.getAllBrands(type.getC_id());
-		List<Integer> ids = detaildao.getAllDetailID("form",form_string);
+		List<Integer> ids = detaildao.getAllDetailID("form", form_string);
 		furnitures = new ArrayList<Furniture>();
 		if (!ids.isEmpty()) {
 			for (int detail_id : ids) {
 				Furniture f = furnituredao.getAllFurnitureByDetail(detail_id);
-				if (f != null &&f.getType().equals(type.getC_name()) ){
+				if (f != null && f.getType().equals(type.getC_name())) {
 					furnitures.add(f);
 				}
 			}
 		}
-		System.out.println("========================家具名称:"+type.getC_name());
 		type.setC_id(type.getC_id());
 		type.setC_name(type.getC_name());
 		return SUCCESS;
 	}
-	
+
 	public String selectByBrandType() throws Exception {
 		types = typedao.getAllTypes();
 		Utils utils = new Utils();
 		formlist = utils.getAllForms(type.getC_id());
 		brandlist = utils.getAllBrands(type.getC_id());
-		List<Integer> ids = detaildao.getAllDetailID("brand",brand_string);
+		List<Integer> ids = detaildao.getAllDetailID("brand", brand_string);
 		furnitures = new ArrayList<Furniture>();
 		if (!ids.isEmpty()) {
 			for (int detail_id : ids) {
 				Furniture f = furnituredao.getAllFurnitureByDetail(detail_id);
-				if (f != null && f.getType().equals(type.getC_name())){
+				if (f != null && f.getType().equals(type.getC_name())) {
 					furnitures.add(f);
 				}
 			}
 		}
 		return SUCCESS;
+	}
+
+	public String selectByPriceType() throws Exception {
+		types = typedao.getAllTypes();
+		Utils utils = new Utils();
+		formlist = utils.getAllForms(type.getC_id());
+		brandlist = utils.getAllBrands(type.getC_id());
+		furnitures = furnituredao.getAllFurnitureByPrice(minprice, maxprice);
+		for (Furniture f : furnitures) {
+			if (!f.getType().equals(type.getC_name())) {
+				furnitures.remove(f);
+			}
+		}
+		return SUCCESS;
+	}
+
+	private String getUid() {
+		Map session = ActionContext.getContext().getSession();
+		Object o = session.get("user");
+		if (o == null) {
+			return null;
+		} else {
+			return (String) o;
+		}
+	}
+
+	public String addInCar() throws Exception {
+		boolean isTrue = false;
+		Map session = ActionContext.getContext().getSession();
+		Object o = session.get("user");
+		if (o != null ) {
+			String uid = (String)o;
+			Car_Furniture car = new Car_Furniture();
+			car.setF_id(furniture.getFurniture_id());
+			car.setShoper(furniture.getUid());
+			session = ActionContext.getContext().getSession();
+			List<Car_Furniture> cars = (List<Car_Furniture>) session.get("car");
+			if (cars==null) {
+				cars = new ArrayList<Car_Furniture>();
+			}
+			cars.add(car);
+			session.put("car", cars);
+			System.out.println("添加到成功购物车");
+			
+			isTrue = true;
+		}
+		return isTrue ? "success" : "fail";
 	}
 }
