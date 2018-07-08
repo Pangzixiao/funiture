@@ -1,5 +1,7 @@
 package controller;
 
+import java.util.List;
+
 import com.opensymphony.xwork2.ActionSupport;
 
 import bean.Comment;
@@ -7,8 +9,10 @@ import dao.CommentDAO;
 import dao.CommentDAOImp;
 
 public class CommentAction extends ActionSupport {
-    Comment comment;
-    CommentDAO commentdao = new CommentDAOImp();
+	Comment comment;
+	List<Comment> comments;
+	CommentDAO commentdao = new CommentDAOImp();
+
 	public Comment getComment() {
 		return comment;
 	}
@@ -16,15 +20,35 @@ public class CommentAction extends ActionSupport {
 	public void setComment(Comment comment) {
 		this.comment = comment;
 	}
+
 	
-	public String findcomment()throws Exception{
-		
+	public List<Comment> getComments() {
+		return comments;
+	}
+
+	public String findcomment() throws Exception {
+
 		return SUCCESS;
 	}
-	
-public String addComment()throws Exception{
+
+	public String addComment() throws Exception {
 		boolean istrue = false;
-		istrue = commentdao.add(comment);
-		return istrue?"success":"fail";
+		if(commentdao.isExite(comment.getShoper(), comment.getFurniture_id(), comment.getUser())){
+			istrue = commentdao.update(comment);
+		}else{
+			istrue = commentdao.add(comment);
+		}
+		return istrue ? "success" : "fail";
+	}
+	
+	public String showComment() throws Exception {
+		boolean istrue = false;
+		System.out.println("comment.shoper:"+comment.getShoper());
+		System.out.println("comment.f_id:"+comment.getFurniture_id());
+		comments = commentdao.getComments(comment.getShoper(), comment.getFurniture_id());
+		if(!comments.isEmpty()){
+			istrue = true;
+		}
+		return istrue ? "success" : "fail";
 	}
 }

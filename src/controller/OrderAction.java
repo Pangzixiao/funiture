@@ -1,5 +1,6 @@
 package controller;
 
+import java.util.List;
 import java.util.Map;
 
 import com.opensymphony.xwork2.ActionContext;
@@ -7,6 +8,7 @@ import com.opensymphony.xwork2.ActionSupport;
 
 import bean.Furniture;
 import bean.Order;
+import bean.OrderReport;
 import dao.FurnitureDAO;
 import dao.FurnitureDAOImp;
 import dao.OrderDAO;
@@ -17,6 +19,7 @@ public class OrderAction extends ActionSupport {
     String name;
     OrderDAO orderdao = new OrderDAOImp();
     FurnitureDAO furnituredao = new FurnitureDAOImp();
+    List<OrderReport> reports;
 	public Order getOrder() {
 		return order;
 	}
@@ -36,6 +39,11 @@ public class OrderAction extends ActionSupport {
 		this.order = order;
 	}
     
+	public List<OrderReport> getReports() {
+		return reports;
+	}
+
+
 	public String pay() throws Exception{
 		boolean istrue = false;
 		Map session = ActionContext.getContext().getSession();
@@ -68,5 +76,16 @@ public class OrderAction extends ActionSupport {
 		furnituredao.updateSaleVolumeById(f.getSalevolume(), f.getFurniture_id(), f.getUid());
 	    return istrue?"success":"fail";
 	}
-	
+	public String showsPayRecordForUser() throws Exception{
+		boolean istrue = false;
+		Map session = ActionContext.getContext().getSession();
+		String username = (String)session.get("user");
+		if(!username.isEmpty()){
+			reports = orderdao.getReportForUser("0708");
+			if(!reports.isEmpty()){
+				istrue = true;
+			}
+		}
+	    return istrue?"success":"fail";
+	}
 }

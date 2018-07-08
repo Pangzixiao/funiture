@@ -30,10 +30,10 @@
       </s:url>
       <a href="${showInfoUrl}">查看详细信息</a>
     </td>
-    <td>
-    <s:url var="showCommandUrl" action="">
+     <td>
+    <s:url var="showCommentUrl" action="showComment">
          <s:param name="comment.furniture_id" value="#row.furniture_id"/>
-         <s:param name="comment.shoper" value="row.uid"/>
+         <s:param name="comment.shoper" value="#row.uid"/>
       </s:url>
       <a href="${showCommentUrl}">显示评论</a>
     </td>

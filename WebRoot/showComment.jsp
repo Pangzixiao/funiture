@@ -20,11 +20,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <sj:head/>
   </head>
   <s:debug/>
-  <b>用户登录成功</b>
-    <a href="gettypes">开始购物之旅</a>
-    <a href="findFavorite">查看我的收藏</a>
-    <a href="findFromCar">查看购物车</a>
-    <a href="showsPayRecordForUser">查看购买记录</a>
+  <table width="90%" style="border:1px solid green">
+    <tr><td width="10%">user</td><td width="80%">comment</td></tr>
+    <s:iterator value="comments" var="row">
+    <tr>
+      <td width="10%"><s:property value="#row.user"/></td>
+      <td width="80%"><s:property value="#row.comment"/></td>
+    </tr>
+    </s:iterator>
+    </table>
   </body>
 </html>
 

@@ -15,11 +15,11 @@
   </head>
   
   <body>
-    <table style="border:1px solid green"><tr><td>typeid<td>forms_name
+    <table style="border:1px solid green"><tr><td>typeid</td><td>forms_name</td></tr>
     <s:iterator value="list" var="row">
     <tr>
-      <td><s:property value="#row.c_id"/>
-      <td><s:property value="#row.brand_name"/>
+      <td><s:property value="#row.c_id"/></td>
+      <td><s:property value="#row.brand_name"/></td>
     
     <td>
       <s:url var="delBrandUrl" action="del_brand">
@@ -30,6 +30,7 @@
     </td>
     </tr>
     </s:iterator>
+    </table>
   </body>
 </html>
 

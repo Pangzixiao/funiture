@@ -147,6 +147,16 @@
 		    <result name="success">/addcomment_suc.jsp</result>
 		    <result name="fail">/fail.jsp</result>
 		</action>
+		
+		<action name="showComment" class="controller.CommentAction" method="showComment" >
+		    <result name="success">/showComment.jsp</result>
+		    <result name="fail" type="redirect">/empty_comment.jsp</result>
+		</action>
+		
+		<action name="showsPayRecordForUser" class="controller.OrderAction" method="showsPayRecordForUser" >
+		    <result name="success">/showPaidReportForUser.jsp</result>
+		    <result name="fail" type="redirect">/empty_paidReport.jsp</result>
+		</action>
 	</package>
 	<include file="brand.xml" />
     <include file="furniture.xml" />

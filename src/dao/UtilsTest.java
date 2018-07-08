@@ -1,9 +1,11 @@
 package dao;
 
 
+import java.util.List;
+
 import org.junit.Test;
 
-import bean.Comment;
+import bean.OrderReport;
 
 
 public class UtilsTest {
@@ -145,12 +147,25 @@ public class UtilsTest {
 //		order.setUsername("user");
 //		System.out.println(orderdao.add(order));
 //		System.out.println(furnituredao.updateSaleVolumeById(3, 4, "0708"));
-		Comment comment = new Comment();
-		comment.setComment("11111111111111111111111111111");
-		comment.setFurniture_id(1);
-		comment.setShoper("shoper");
-		comment.setUser("user");
-		System.out.println(commentdao.add(comment));
+//		Comment comment = new Comment();
+//		comment.setComment("2222222222222222222222222");
+//		comment.setFurniture_id(1);
+//		comment.setShoper("shoper");
+//		comment.setUser("user");
+//		System.out.println(commentdao.update(comment));
+//		List<Comment>list = commentdao.getComments("0708", 4);
+//		for(Comment c : list){
+//			System.out.println("comment:"+c.getComment());
+//			System.out.println("id:"+c.getFurniture_id());
+//			System.out.println("shoper:"+c.getShoper());
+//			System.out.println("user:"+c.getUser());
+//		}
+		
+//		System.out.println(commentdao.isExite("0708", 4, "070"));
+		List<OrderReport> list = orderdao.getReportForUser("0708");
+		for (OrderReport o : list){
+			System.out.println(o);
+		}
 	}
 
 }
