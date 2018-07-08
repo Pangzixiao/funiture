@@ -82,12 +82,29 @@ public class FurnitureAction extends ActionSupport {
 	}
 
 	public String getAllFunitureByshoper() throws Exception {
-		//ªÒ»°session
+		boolean isTrue = false;
 		Map session = ActionContext.getContext().getSession();
 		String uid = (String)session.get("shoper");
-		System.out.println(uid);
-		list = furnituredao.getAllFurniture(uid);
-		return SUCCESS;
+		if(!uid.isEmpty()){
+			list = furnituredao.getAllFurniture(uid);
+			if(!list.isEmpty()){
+				isTrue = true;
+			}
+		}
+		return isTrue?"success":"fail";
 	}
 
+	
+	public String showTotalInfoForShoper() throws Exception {
+		boolean isTrue = false;
+		Map session = ActionContext.getContext().getSession();
+		String uid = (String)session.get("shoper");
+		if(!uid.isEmpty()){
+			list = furnituredao.getAllFurniture(uid);
+			if(!list.isEmpty()){
+				isTrue = true;
+			}
+		}
+		return isTrue?"success":"fail";
+	}
 }

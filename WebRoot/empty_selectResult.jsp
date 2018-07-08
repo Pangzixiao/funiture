@@ -20,11 +20,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <sj:head/>
   </head>
   <s:debug/>
-  <b>商家登录成功</b>
-  <p>现在选择功能<p>
-  <a href="addFurniturePre">上传商品信息</a>
-  <a href="showUpInfo">浏览已上传的信息</a>
-  <a href="showTotalInfoForShoper">查看统计信息</a>
+  <b>暂时没有记录哦</b>
+    
   </body>
 </html>
 

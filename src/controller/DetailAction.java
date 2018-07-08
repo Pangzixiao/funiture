@@ -62,7 +62,6 @@ public class DetailAction extends ActionSupport {
 
 	public String addDetail() throws Exception {
 		boolean isTrue = false;
-		System.out.println(detail.getDetail_id());
 		isTrue = detaildao.update(detail);
 		return isTrue ? "suc" : "fail";
 	}

@@ -29,7 +29,7 @@
       <td width="20%" ><s:property value="#row.furniture_name"/></td>
       <td width="10%" ><s:property value="#row.price"/></td>
       <td width="10%" ><s:property value="#row.salevolume"/></td>
-      <td width="10%" ><s:property value="%{row.price}*%{row.salevolume}"/></td>
+      <td width="10%" ><s:property value="#row.price*#row.salevolume"/></td>
     <td width="10%">
       <s:url var="showInfoUrl" action="showDetailByid">
          <s:param name="detail.detail_id" value="#row.detail_id"/>
@@ -43,26 +43,9 @@
       </s:url>
       <a href="${showCommentUrl}">显示评论</a>
     </td>
-    
-    <td width="10%">
-    <s:url var="changePicUrl" action="">
-         <s:param name="comment.furniture_id" value="#row.furniture_id"/>
-         <s:param name="comment.shoper" value="row.uid"/>
-      </s:url>
-      <a href="${showCommentUrl}">更改图片</a>
-    </td>
-    
-    <td width="10%">
-    <s:url var="showPicUrl" action="">
-         <s:param name="comment.furniture_id" value="#row.furniture_id"/>
-         <s:param name="comment.shoper" value="row.uid"/>
-      </s:url>
-      <a href="${showCommentUrl}">查看图片</a>
-    </td>
     </tr>
     </s:iterator>
-    </table>
-    
+    </table> 
   </body>
 </html>
 

@@ -157,6 +157,11 @@
 		    <result name="success">/showPaidReportForUser.jsp</result>
 		    <result name="fail" type="redirect">/empty_paidReport.jsp</result>
 		</action>
+		
+		<action name="showTotalInfoForShoper" class="controller.FurnitureAction" method="showTotalInfoForShoper" >
+		    <result name="success">/showTotalInfoForShoper.jsp</result>
+		    <result name="fail" type="redirect">/empty_paidReport.jsp</result>
+		</action>
 	</package>
 	<include file="brand.xml" />
     <include file="furniture.xml" />
