@@ -20,14 +20,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <sj:head/>
   </head>
   <s:debug/>
-  <b>成功</b>
-  <s:url var="addCommentUrl" action="findcomment">
-         <s:param name="comment.user" value="%{order.username}"/>
-         <s:param name="comment.shoper" value="%{order.shoper}"/>
-         <s:param name="comment.furniture_id" value="%{order.furniture_id}"/>
-      </s:url>
-      <a href="${addCommentUrl}">添加评论</a>&nbsp
-  <a href="user.jsp">返回首页</a>
+  <p>注册成功<br>
+  <s:property value="user.uid"/><br>
+  <a href="login.jsp">请点此登录</a><br>
   </body>
 </html>
 

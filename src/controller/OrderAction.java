@@ -1,11 +1,13 @@
 package controller;
 
+import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
 import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
+import bean.Car_Furniture;
 import bean.Furniture;
 import bean.Order;
 import bean.OrderReport;
@@ -52,9 +54,6 @@ public class OrderAction extends ActionSupport {
 			order.setUsername(username);
 			istrue = true;
 		}
-		System.out.println("username:"+order.getUsername());
-		System.out.println("furniture_id:"+order.getFurniture_id());
-		System.out.println("shop:"+order.getShoper());
 		return istrue?"success":"fail";
 	}
 	
@@ -70,10 +69,29 @@ public class OrderAction extends ActionSupport {
 	
 	public String addOrder() throws Exception{
 		boolean istrue = false;
+		//添加订单记录
 		istrue = orderdao.add(order);
+		//获取家具通过订单的商家和家具id
 		Furniture f = furnituredao.getFurniture(order.getShoper(), order.getFurniture_id());
+		//更新家具的销售量
 		f.setSalevolume(f.getSalevolume()+order.getCount());
 		furnituredao.updateSaleVolumeById(f.getSalevolume(), f.getFurniture_id(), f.getUid());
+		//将支付完成的商品从购物车中移除
+		Map session = ActionContext.getContext().getSession();
+		List<Car_Furniture> cars = (List<Car_Furniture>) session.get("car");
+		Car_Furniture car_furniture = new Car_Furniture();
+		car_furniture.setF_id(order.getFurniture_id());
+		car_furniture.setShoper(order.getShoper());
+		List<Car_Furniture> newcars= new ArrayList<Car_Furniture>();
+		if (cars != null) {
+			for (Car_Furniture car : cars) {
+				
+				if (!car.equals(car_furniture)) {
+					newcars.add(car);
+				}
+			}
+			session.put("car", newcars);
+		}
 	    return istrue?"success":"fail";
 	}
 	public String showsPayRecordForUser() throws Exception{
@@ -81,7 +99,7 @@ public class OrderAction extends ActionSupport {
 		Map session = ActionContext.getContext().getSession();
 		String username = (String)session.get("user");
 		if(!username.isEmpty()){
-			reports = orderdao.getReportForUser("0708");
+			reports = orderdao.getReportForUser(username);
 			if(!reports.isEmpty()){
 				istrue = true;
 			}

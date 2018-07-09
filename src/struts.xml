@@ -6,23 +6,47 @@
 	<constant name="struts.devMode" value="true" />
 	<constant name="struts.custom.i18n.resources" value="global" />
 	<package name="default" extends="struts-default">
+	
+	    <interceptors>
+			<interceptor name="myCheck" class="interceptor.SecInterceptor" />
+		 	<interceptor-stack name="secStack">
+		 	   <interceptor-ref name="myCheck"/>
+		 	   <interceptor-ref name="defaultStack"/>
+			</interceptor-stack>
+		</interceptors>
+		<global-results>
+		   <result name="login">/index.jsp</result>
+		   <result name="ex">/ex.jsp</result>
+		</global-results>
+		
+		
+		<global-exception-mappings>
+            <exception-mapping exception="java.lang.Exception" result="ex"/>            
+        </global-exception-mappings>
+		
+		
+		
 		<action name="Login" class="controller.UserAction" method="login">
 			<result name="suc_admin">/admin.jsp</result>
 			<result name="suc_shoper">/shoper.jsp</result>
 			<result name="suc_user">/user.jsp</result>
 			<result name="fail">/fail.jsp</result>
+			<result name="input">/login.jsp</result>
 		</action>
 		
-		<action name="regist" class="controller.UserAction" method="addUser">
-			<result name="success">/index.jsp</result>
+		<action name="regist" class="controller.RegistAction" >
+			<result name="success">/regist_suc.jsp</result>
 			<result name="fail">/fail.jsp</result>
+			<result name="input">/regist.jsp</result>
 		</action>
-
+  
         <action name="showTypes" class="controller.TypeAction">
+            <interceptor-ref name="secStack" />
             <result >/typesdeal.jsp</result>
         </action>
         
         <action name="updateType" class="controller.TypeAction" method="update">
+            <interceptor-ref name="secStack" />
             <result name="success">/success.jsp</result>
             <result name="fault">/fail.jsp</result>
         </action>
@@ -37,16 +61,19 @@
 		
 		
 		<action name="del_form" class="controller.FormsAction" method="delForm">
+		    <interceptor-ref name="secStack" />
 		    <result name="success" >/success.jsp</result>
 		    <result name="fault">/fail.jsp</result>
 		</action>
 		
 		<action name="add_form" class="controller.FormsAction" method = "addForm">
+		    <interceptor-ref name="secStack" />
 		    <result name="success" type = "redirect">/admin.jsp</result>
 		    <result name="fault">/fail.jsp</result>
 		</action>
 		
 		<action name="addFormsForType" class="controller.FormsAction" method="gettypes" >
+		    <interceptor-ref name="secStack" />
 		    <result>/addFormsForType.jsp</result>
 		</action>
 		
@@ -132,6 +159,7 @@
 		<action name="count_fee" class="controller.OrderAction" method="count_fee" >
 		    <result name="success" >/paying.jsp</result>
 		    <result name="fail" type="redirect">/fail.jsp</result>
+		    <result name="input">/paying_count.jsp</result>
 		</action>
 		
 		<action name="addOrder" class="controller.OrderAction" method="addOrder" >
@@ -146,6 +174,7 @@
 		<action name="addComment" class="controller.CommentAction" method="addComment" >
 		    <result name="success">/addcomment_suc.jsp</result>
 		    <result name="fail">/fail.jsp</result>
+		    <result name="input">/addComment.jsp</result>
 		</action>
 		
 		<action name="showComment" class="controller.CommentAction" method="showComment" >
@@ -162,7 +191,71 @@
 		    <result name="success">/showTotalInfoForShoper.jsp</result>
 		    <result name="fail" type="redirect">/empty_paidReport.jsp</result>
 		</action>
+		
+		<action name="exit" class="controller.ExitAction" >
+		    <result type="redirect">/index.jsp</result>
+		</action>
+		
+		<action name="exitShoper" class="controller.ExitAction" method = "exitShoper" >
+		    <result type="redirect">/index.jsp</result>
+		</action>
+		
+		
+		
+		
+		<action name="add_furniture" class="controller.FurnitureAction" method = "addFurniture">
+		    <interceptor-ref name="secStack" />
+		    <result name="suc" >/addDetail.jsp</result>
+		    <result name="fail">/fail.jsp</result>
+		    <result name="input">/addfurniture.jsp</result>
+		</action>
+		
+		<action name="add_detail" class="controller.DetailAction" method = "addDetail">
+		    <interceptor-ref name="secStack" />
+		    <result name="suc" >/success.jsp</result>
+		    <result name="fail">/fail.jsp</result>
+		</action>
+		
+		<action name="addFurniturePre" class="controller.DetailAction" method ="addFuniturePre">
+		    <interceptor-ref name="secStack" />
+		    <result>/addfurniture.jsp</result>
+		</action>
+		
+		<action name="showUpInfo" class="controller.FurnitureAction" method ="getAllFunitureByshoper">
+		    <interceptor-ref name="secStack" />
+		    <result name="success">/showShoperFunitures.jsp</result>
+		    <result name="fail" type="redirect">/empty_selectResult.jsp</result>
+		</action>
+		
+		<action name="showDetailByid" class="controller.DetailAction" method ="findById">
+		    <result name="success">/detail_list.jsp</result>
+		    <result name="fail" type="redirect">/empty_selectResult.jsp</result>
+		</action>
+		
+		
+		
+		<action name="showBrandByid" class="controller.BrandAction">
+            <interceptor-ref name="secStack" />
+		    <result >/showBrandsByid.jsp</result>
+		</action>
+		
+		
+		<action name="del_brand" class="controller.BrandAction" method="delBrand">
+		    <interceptor-ref name="secStack" />
+		    <result name="success" >/success.jsp</result>
+		    <result name="fault">/fail.jsp</result>
+		</action>
+		
+		<action name="add_brand" class="controller.BrandAction" method = "addBrand">
+		    <interceptor-ref name="secStack" />
+		    <result name="success" type="redirect" >/admin.jsp</result>
+		    <result name="fault">/fail.jsp</result>
+		</action>
+		
+		<action name="addBrandForType" class="controller.BrandAction" method = "gettypes">
+		    <interceptor-ref name="secStack" />
+		    <result>/addBrandForType.jsp</result>
+		</action>
 	</package>
-	<include file="brand.xml" />
-    <include file="furniture.xml" />
+	
 </struts>

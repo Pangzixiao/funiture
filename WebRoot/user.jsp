@@ -25,6 +25,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <a href="findFavorite">查看我的收藏</a>
     <a href="findFromCar">查看购物车</a>
     <a href="showsPayRecordForUser">查看购买记录</a>
+    <a href="exit">退出</a>
   </body>
 </html>
 

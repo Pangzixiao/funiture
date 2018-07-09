@@ -110,7 +110,6 @@ public class CarAction extends ActionSupport {
 		Map session = ActionContext.getContext().getSession();
 		List<Car_Furniture> cars = (List<Car_Furniture>) session.get("car");
 		car_furniture.setF_id(id);
-		System.out.println("uid:"+car_furniture.getShoper()+"  f_id:"+car_furniture.getF_id());
 		List<Car_Furniture> newcars= new ArrayList<Car_Furniture>();
 		if (cars != null) {
 			for (Car_Furniture car : cars) {
@@ -120,7 +119,6 @@ public class CarAction extends ActionSupport {
 					newcars.add(car);
 				}
 			}
-			System.out.println("新购物车中商品的数量是:"+newcars.size());
 			session.put("car", newcars);
 			isTrue = true;
 		}else{

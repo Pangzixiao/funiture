@@ -43,8 +43,6 @@ public class CommentAction extends ActionSupport {
 	
 	public String showComment() throws Exception {
 		boolean istrue = false;
-		System.out.println("comment.shoper:"+comment.getShoper());
-		System.out.println("comment.f_id:"+comment.getFurniture_id());
 		comments = commentdao.getComments(comment.getShoper(), comment.getFurniture_id());
 		if(!comments.isEmpty()){
 			istrue = true;

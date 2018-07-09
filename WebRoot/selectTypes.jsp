@@ -72,6 +72,8 @@
       <s:textfield size="7" name="minprice" lable="low"/><s:textfield size="7" name="maxprice" lable="up"/>
       <s:submit value="确定"/>
       </s:form></div>
+      
+      <br/><a href = "user.jsp"><p >返回首页</a><br/>
   </body>
 </html>
 

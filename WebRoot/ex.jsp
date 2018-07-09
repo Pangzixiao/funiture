@@ -13,21 +13,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <base href="<%=basePath%>">
     
     <title>login</title>
+    <meta http-equiv="refresh" content="5;url=.">
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
 <s:head/>
 <sj:head/>
   </head>
-  <s:debug/>
-  <b>成功</b>
-  <s:url var="addCommentUrl" action="findcomment">
-         <s:param name="comment.user" value="%{order.username}"/>
-         <s:param name="comment.shoper" value="%{order.shoper}"/>
-         <s:param name="comment.furniture_id" value="%{order.furniture_id}"/>
-      </s:url>
-      <a href="${addCommentUrl}">添加评论</a>&nbsp
-  <a href="user.jsp">返回首页</a>
+  <p>服务器繁忙,5s后返回登录页面</p>
+    
   </body>
 </html>
 

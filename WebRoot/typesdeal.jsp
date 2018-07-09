@@ -15,10 +15,16 @@
   </head>
   
   <body>
-    <table style="border:1px solid green"><tr><td>分类<td>修改内容<td>查看风格<td>查看品牌
+    <table  width="40%" style="border:1px solid green">
+    <tr>
+    <td  width="10%" >分类</td>
+    <td width="10%" >修改内容</td>
+    <td width="10%" >查看风格</td>
+    <td width="10%" >查看品牌</td>
+    </tr>
     <s:iterator value="list" var="row">
     <tr>
-      <td><s:property value="#row.c_name"/>
+      <td width="10%" ><s:property value="#row.c_name"/></td>
       <td>
       <s:url var="updateUrl" action="findType">
          <s:param name="type.c_id" value="#row.getC_id()"/>
@@ -26,14 +32,14 @@
       <a href="${updateUrl}">修改内容</a>
     </td>
     
-    <td>
+    <td width="10%" >
       <s:url var="showFormsUrl" action="showFormsByid">
          <s:param name="forms.c_id" value="#row.getC_id()"/>
       </s:url>
       <a href="${showFormsUrl}">查看风格</a>
     </td>
     
-    <td>
+    <td width="10%" >
       <s:url var="showBrandUrl" action="showBrandByid">
          <s:param name="brand.c_id" value="#row.getC_id()"/>
       </s:url>
@@ -43,6 +49,7 @@
     
     </tr>
     </s:iterator>
+    </table>
   </body>
 </html>
 

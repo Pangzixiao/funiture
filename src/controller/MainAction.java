@@ -192,8 +192,6 @@ public class MainAction extends ActionSupport {
 				}
 			}
 		}
-		type.setC_id(type.getC_id());
-		type.setC_name(type.getC_name());
 		return SUCCESS;
 	}
 
@@ -220,10 +218,11 @@ public class MainAction extends ActionSupport {
 		Utils utils = new Utils();
 		formlist = utils.getAllForms(type.getC_id());
 		brandlist = utils.getAllBrands(type.getC_id());
-		furnitures = furnituredao.getAllFurnitureByPrice(minprice, maxprice);
-		for (Furniture f : furnitures) {
-			if (!f.getType().equals(type.getC_name())) {
-				furnitures.remove(f);
+		List<Furniture> oldlist = furnituredao.getAllFurnitureByPrice(minprice, maxprice);
+		furnitures = new ArrayList<Furniture>();
+		for (Furniture f : oldlist) {
+			if (f.getType().equals(type.getC_name())) {
+				furnitures.add(f);
 			}
 		}
 		return SUCCESS;

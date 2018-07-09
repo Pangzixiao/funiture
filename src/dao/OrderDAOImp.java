@@ -33,7 +33,7 @@ public class OrderDAOImp implements OrderDAO {
 	@Override
 	public List<OrderReport> getReportForUser(String username) throws Exception {
 		jdbcUtils.getConnection();
-		String sql = "select order_id,furnitures.uid,furnitures.furniture_id,detail_id,furniture_name,count,price,cost,paydate from orderreport , furnitures where orderreport.furniture_id = furnitures.furniture_id and orderreport.username=?";
+		String sql = "select  order_id,furnitures.uid,furnitures.furniture_id,detail_id,furniture_name,count,price,cost,paydate from orderreport , furnitures where orderreport.furniture_id = furnitures.furniture_id and orderreport.username=? group by order_id";
 		List params = new ArrayList();
 		params.add(username);
 		List<OrderReport> list = new ArrayList<OrderReport>();

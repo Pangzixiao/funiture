@@ -15,13 +15,18 @@
   </head>
   
   <body>
-    <table style="border:1px solid green"><tr><td>formid<td>forms_name
+    <table width="35%" style="border:1px solid green">
+    <tr>
+    <td width="10%">分类号</td>
+    <td width="10%">风格名</td>
+    <td width="15%">删除</td>
+    </tr>
     <s:iterator value="list" var="row">
     <tr>
-      <td><s:property value="#row.c_id"/>
-      <td><s:property value="#row.form_name"/>
+      <td width="10%"><s:property value="#row.c_id"/>
+      <td width="10%"><s:property value="#row.form_name"/>
     
-    <td>
+    <td width="15%">
       <s:url var="delFormUrl" action="del_form">
          <s:param name="forms.c_d" value="#row.c_id"/>
          <s:param name="forms.form_name" value="#row.form_name"/>
@@ -30,7 +35,7 @@
     </td>
     </tr>
     </s:iterator>
-    
+    </table>
     
   </body>
 </html>

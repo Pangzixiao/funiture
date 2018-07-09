@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE validators PUBLIC
+  		"-//Apache Struts//XWork Validator 1.0.3//EN"
+  		"http://struts.apache.org/dtds/xwork-validator-1.0.3.dtd">
+<validators>
+	
+	
+	<field name="furniture.furniture_name">
+	   <field-validator type="requiredstring">
+	     <message>没有输入值</message>
+	   </field-validator>
+	</field>
+	<field name="furniture.furniture_id">
+		<field-validator type="int">
+			<param name="min">1</param>
+			<message>家具id大于1</message> 
+		</field-validator>
+	</field>
+	<field name="furniture.price">
+		<field-validator type="double">
+			<param name="minInclusive">0</param>
+			<message>价格大于0</message>
+		</field-validator>
+	</field>
+	
+</validators>

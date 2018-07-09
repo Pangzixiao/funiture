@@ -85,7 +85,7 @@ public class FurnitureAction extends ActionSupport {
 		boolean isTrue = false;
 		Map session = ActionContext.getContext().getSession();
 		String uid = (String)session.get("shoper");
-		if(!uid.isEmpty()){
+		if(uid != null){
 			list = furnituredao.getAllFurniture(uid);
 			if(!list.isEmpty()){
 				isTrue = true;
@@ -99,7 +99,7 @@ public class FurnitureAction extends ActionSupport {
 		boolean isTrue = false;
 		Map session = ActionContext.getContext().getSession();
 		String uid = (String)session.get("shoper");
-		if(!uid.isEmpty()){
+		if(uid!=null){
 			list = furnituredao.getAllFurniture(uid);
 			if(!list.isEmpty()){
 				isTrue = true;

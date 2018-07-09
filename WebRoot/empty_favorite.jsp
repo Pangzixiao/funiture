@@ -12,7 +12,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   <head>
     <base href="<%=basePath%>">
     
-    <title>login</title>
+    <meta http-equiv="refresh" content="5;url=./user.jsp">
 	<!--
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
@@ -21,7 +21,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   <s:debug/>
   <b>当前收藏夹为空</b>
-    
+    <p>5s后跳转到首页
   </body>
 </html>
 

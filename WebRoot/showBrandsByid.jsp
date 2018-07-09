@@ -15,13 +15,19 @@
   </head>
   
   <body>
-    <table style="border:1px solid green"><tr><td>typeid</td><td>forms_name</td></tr>
+    <table width="35%" style="border:1px solid green">
+    <tr>
+    <td width="10%">分类号</td>
+    <td width="10%">品牌名</td>
+    <td width="15%" >删除</td>
+    </tr>
+    
     <s:iterator value="list" var="row">
     <tr>
-      <td><s:property value="#row.c_id"/></td>
-      <td><s:property value="#row.brand_name"/></td>
+      <td width="10%"><s:property value="#row.c_id"/></td>
+      <td width="10%"><s:property value="#row.brand_name"/></td>
     
-    <td>
+    <td width="15%">
       <s:url var="delBrandUrl" action="del_brand">
          <s:param name="brand.c_d" value="#row.c_id"/>
          <s:param name="brand.brand_name" value="#row.brand_name"/>

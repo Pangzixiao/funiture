@@ -21,7 +21,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   <s:debug/>
   <table width="90%" style="border:1px solid green">
-    <tr><td width="10%">user</td><td width="80%">comment</td></tr>
+    <tr><td width="10%">用户</td><td width="80%">评论</td></tr>
     <s:iterator value="comments" var="row">
     <tr>
       <td width="10%"><s:property value="#row.user"/></td>

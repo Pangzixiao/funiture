@@ -13,6 +13,7 @@ import dao.Utils;
 public class UserAction extends ActionSupport {
 	User user;
 	int type;
+
 	UserDAO userdao = new UserDAOImp();
 
 	public User getUser() {
@@ -40,6 +41,8 @@ public class UserAction extends ActionSupport {
 		if (type == 0) {
 			isTrue = userdao.check_pass(user, "admin");
 			if (isTrue == true) {
+				Map session = ActionContext.getContext().getSession();
+				session.put("shoper", user.getUid());
 				return "suc_admin";
 			}
 		} else if (type == 1) {
@@ -59,25 +62,8 @@ public class UserAction extends ActionSupport {
 				return "suc_user";
 			}
 		}
-		// if(isTrue == true){
-		// Map session = ActionContext.getContext().getSession();
-		// session.put("user", user.getUid());
-		// }
 		return "fail";
 	}
 
-	/**
-	 * зЂВс
-	 * @return
-	 * @throws Exception
-	 */
-	public String addUser() throws Exception {
-		boolean isTrue = false;
-		if (type == 0) {
-			isTrue = userdao.addUser(user, "shopUser");
-		} else {
-			isTrue = userdao.addUser(user, "user");
-		}
-		return isTrue ? "success" : "fail";
-	}
+	
 }

@@ -24,7 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <p>评论如下：
     <br>
        <s:property value="comment.comment"/>
- 
+ <br> <a href="user.jsp">点击这里返回首页</a>
   </body>
 </html>
 

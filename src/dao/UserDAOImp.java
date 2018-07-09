@@ -34,4 +34,20 @@ public class UserDAOImp implements UserDAO {
     	jdbcUtils.releaseConn();
 		return isTrue;
 	}
+
+	@Override
+	public boolean isUidExit(String uid,String formname) throws Exception {
+		boolean isTure = false;
+    	jdbcUtils.getConnection();
+    	String sql = "select * from "+formname+" where uid=?";
+    	List params = new ArrayList();
+    	params.add(uid);
+    	Map<String,Object> admin = jdbcUtils.findSimpleResult(sql, params);
+    	if(!admin.isEmpty())
+    		isTure = true;
+    	jdbcUtils.releaseConn();
+    	return isTure;
+	}
+	
+	
 }

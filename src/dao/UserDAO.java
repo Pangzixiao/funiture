@@ -13,4 +13,5 @@ public interface UserDAO {
 	JdbcUtils jdbcUtils = new JdbcUtils();
 	public boolean check_pass(User user,String formname) throws Exception;
 	public boolean addUser(User user,String formname) throws Exception;
+	public boolean isUidExit(String uid,String formname)throws Exception;
 }
