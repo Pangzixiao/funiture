@@ -73,6 +73,20 @@ public class FavoriteDAOImp implements FavoriteDAO {
 		
 	}
 
+	@Override
+	public boolean isInFavorite(Favorite favorite) throws Exception {
+		jdbcUtils.getConnection();
+		List<Forms> list = new ArrayList<Forms>();
+		String sql = "select * from favorite where uid = ? and furniture_id = ? and shoper = ?";
+		List params = new ArrayList();
+		params.add(favorite.getUid());
+		params.add(favorite.getFurniture_id());
+		params.add(favorite.getShoper());
+		List<Map<String, Object>> maps = jdbcUtils.findMoreResult(sql, params);
+		jdbcUtils.releaseConn();
+		return !maps.isEmpty();
+	}
+
 	
 
 }

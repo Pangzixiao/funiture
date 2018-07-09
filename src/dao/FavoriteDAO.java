@@ -12,4 +12,6 @@ public interface FavoriteDAO {
 	public boolean isExit(String uid) throws Exception;
 	//根据用户名查找收藏夹中所有的收藏
 	public List<Favorite> getAllFavorite(String uid) throws Exception;
+	//判断商品信息是否在收藏夹中
+	public boolean isInFavorite(Favorite favorite)throws Exception;
 }

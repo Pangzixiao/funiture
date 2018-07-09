@@ -142,7 +142,7 @@
 		
 		<action name="addInFavorite" class="controller.FavoriteAction" method="addInFavorite" >
 		    <result name="success" type="redirect">/user.jsp</result>
-		    <result name="fail" type="redirect">/fail.jsp</result>
+		    <result name="fail" type="redirect">/exitInFavorite.jsp</result>
 		</action>
 		
 		<action name="removeFromFavorite" class="controller.FavoriteAction" method="removeFromFavorite" >

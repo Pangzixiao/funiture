@@ -15,8 +15,9 @@
   </head>
   
   <body>
-    <table width="70%" style="border:1px solid green">
+    <table width="80%" style="border:1px solid green">
     <tr>
+    <td width="10%">商家</td>
     <td width="20%" >家具名称</td>
     <td width="10%" >单价</td>
     <td width="10%" >销售量</td>
@@ -25,6 +26,7 @@
     <s:iterator value="list" var="row">
 
     <tr>
+      <td width="10%"><s:property value="#row.uid"/></td>
       <td width="20%" ><s:property value="#row.furniture_name"/></td>
       <td width="10%" ><s:property value="#row.price"/></td>
       <td width="10%" ><s:property value="#row.salevolume"/></td>

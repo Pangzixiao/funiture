@@ -28,7 +28,7 @@
     
     <td width="15%">
       <s:url var="delFormUrl" action="del_form">
-         <s:param name="forms.c_d" value="#row.c_id"/>
+         <s:param name="forms.c_id" value="#row.c_id"/>
          <s:param name="forms.form_name" value="#row.form_name"/>
       </s:url>
       <a href="${delFormUrl}">删除</a>

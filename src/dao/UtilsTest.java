@@ -1,11 +1,9 @@
 package dao;
 
 
-import java.util.List;
-
 import org.junit.Test;
 
-import bean.OrderReport;
+import bean.Favorite;
 
 
 public class UtilsTest {
@@ -162,10 +160,22 @@ public class UtilsTest {
 //		}
 		
 //		System.out.println(commentdao.isExite("0708", 4, "070"));
-		List<OrderReport> list = orderdao.getReportForUser("0708");
-		for (OrderReport o : list){
-			System.out.println(o);
+//		List<OrderReport> list = orderdao.getReportForUser("0708");
+//		for (OrderReport o : list){
+//			System.out.println(o);
+//		}
+		
+		Favorite f = new Favorite();
+		f.setFurniture_id(1);
+		f.setShoper("nihao");
+		f.setUid("aa");
+//		System.out.println(favoritedao.add(f));
+		if(!favoritedao.isInFavorite(f)){
+			System.out.println("当前家具已存在");
+			System.out.println(favoritedao.add(f));
 		}
+		System.out.println("当前家具不存在");
+		
 	}
 
 }
