@@ -15,6 +15,7 @@ import dao.FurnitureDAOImp;
 
 public class PicAction extends ActionSupport {
     Furniture f;
+    String path;
     File image;
 	String imageContentType;
 	String imageFileName;
@@ -23,6 +24,17 @@ public class PicAction extends ActionSupport {
 	public Furniture getF() {
 		return f;
 	}
+
+	
+	public String getPath() {
+		return path;
+	}
+
+
+	public void setPath(String path) {
+		this.path = path;
+	}
+
 
 	public void setF(Furniture f) {
 		this.f = f;
@@ -55,11 +67,7 @@ public class PicAction extends ActionSupport {
 	
 	
 	public String selectPic() throws Exception {
-		System.out.println("id:"+f.getFurniture_id());
-		System.out.println("shoper:"+f.getUid());
 		f = dao.getFurniture(f.getUid(), f.getFurniture_id());
-		System.out.println("f.uid:"+f.getUid());
-		System.out.println("f.f_id:"+f.getFurniture_id());
 		return SUCCESS;
 	}
 	
@@ -75,4 +83,15 @@ public class PicAction extends ActionSupport {
 		return isTrue?"success":"fail";
 	}
     
+	
+	
+	public String showPic() throws Exception {
+		System.out.println("·þÎñÆ÷Â·¾¶:"+path);
+		path = dao.findPicName(f.getFurniture_id(), f.getUid());
+		if(path.isEmpty()){
+			return "fail";
+		}
+		return "success";
+	}
+	
 }

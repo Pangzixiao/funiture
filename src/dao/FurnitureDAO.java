@@ -60,6 +60,10 @@ public interface FurnitureDAO {
 	 * 通过商家名称和商品号更改图片名
 	 * 
 	 */
-	
 	public boolean updatePic(int furniture_id,String shoper,String pic)throws Exception;
+	/**
+	 * 通过商家名称和商品号获得图片名称
+	 * 
+	 */
+	public String findPicName(int furniture_id,String shoper)throws Exception;
 }

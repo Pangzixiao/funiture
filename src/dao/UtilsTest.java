@@ -3,7 +3,7 @@ package dao;
 
 import org.junit.Test;
 
-import bean.Furniture;
+import bean.Brand;
 
 
 public class UtilsTest {
@@ -175,8 +175,12 @@ public class UtilsTest {
 //			System.out.println(favoritedao.add(f));
 //		}
 //		System.out.println("当前家具不存在");
-		Furniture f =furnituredao.getFurniture("0708", 1);
-		System.out.println(f.getPic_src());
+//		Furniture f =furnituredao.getFurniture("0708", 1);
+//		System.out.println(f.getPic_src());
+		Brand brand = new Brand();
+		brand.setBrand_name("由美");
+		brand.setC_id(0);
+		System.out.println("当前品牌是否存在:"+branddao.isExit(brand.getC_id(), brand.getBrand_name()));
 	}
 
 }

@@ -204,6 +204,19 @@ public class FurnitureDAOImp implements FurnitureDAO {
 		jdbcUtils.releaseConn();
 		return istrue;
 	}
+
+	@Override
+	public String findPicName(int furniture_id, String shoper) throws Exception {
+		String sql = "select pic_src from furnitures where furniture_id= ? and uid = ?";
+		boolean istrue = false;
+		jdbcUtils.getConnection();
+		List params = new ArrayList();
+		params.add(furniture_id);
+		params.add(shoper);
+		Map<String,Object> map = jdbcUtils.findSimpleResult(sql, params);
+		jdbcUtils.releaseConn();
+		return (String)map.get("pic_src");
+	}
 	
 	
 }

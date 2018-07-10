@@ -13,5 +13,6 @@ public interface FormsDAO {
 	public boolean add(Forms forms)throws Exception;
 	//获取风格的集合
 	public List<String> getAllForms()throws Exception;
-	
+	//判断某个分类下风格是否存在
+	public boolean isExit(int c_id,String form_name)throws Exception;
 }

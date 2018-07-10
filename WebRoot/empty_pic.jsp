@@ -20,14 +20,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <sj:head/>
   </head>
   <s:debug/>
-  <b>测试成功</b>
-  <!-- ${pageContext.request.contextPath} tomcat部署路径，
-          如：D:\apache-tomcat-6.0.18\webapps\struts2_upload\ -->
-  <body>
-  
-  <div>
-  <img src="${pageContext.request.contextPath}/<s:property value="'upload/'+path"/>" height="200" width="200">
-  </div>
+  <b>该商品暂时没有图片</b>
+    
   </body>
 </html>
 

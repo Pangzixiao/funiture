@@ -29,7 +29,7 @@
     
     <td width="15%">
       <s:url var="delBrandUrl" action="del_brand">
-         <s:param name="brand.c_d" value="#row.c_id"/>
+         <s:param name="brand.c_id" value="#row.c_id"/>
          <s:param name="brand.brand_name" value="#row.brand_name"/>
       </s:url>
       <a href="${delBrandUrl}">删除</a>

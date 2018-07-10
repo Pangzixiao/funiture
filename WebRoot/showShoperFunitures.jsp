@@ -53,9 +53,9 @@
     </td>
     
     <td width="10%">
-    <s:url var="showPicUrl" action="selectPic">
+    <s:url var="showPicUrl" action="showPic">
          <s:param name="f.furniture_id" value="#row.furniture_id"/>
-         <s:param name="f.uid" value="row.uid"/>
+         <s:param name="f.uid" value="#row.uid"/>
       </s:url>
       <a href="${showPicUrl}">查看图片</a>
     </td>

@@ -63,7 +63,9 @@ public class BrandAction extends ActionSupport {
 
 	public String addBrand() throws Exception {
 		boolean isTrue = false;
-        isTrue = dao.add(brand);
+		if(!dao.isExit(brand.getC_id(), brand.getBrand_name())){
+			isTrue = dao.add(brand);
+		}
 		return isTrue? "success":"fault";
 	}
 	public String gettypes() throws Exception{

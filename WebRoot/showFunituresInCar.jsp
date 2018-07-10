@@ -68,11 +68,11 @@
     </td>
     
     <td width="10%">
-    <s:url var="showPicUrl" action="">
-         <s:param name="comment.furniture_id" value="#row.furniture_id"/>
-         <s:param name="comment.shoper" value="row.uid"/>
+    <s:url var="showPicUrl" action="showPic">
+         <s:param name="f.furniture_id" value="#row.furniture_id"/>
+         <s:param name="f.uid" value="#row.uid"/>
       </s:url>
-      <a href="${showCommentUrl}">查看图片</a>
+      <a href="${showPicUrl}">查看图片</a>
     </td>
     </tr>
     </s:iterator>

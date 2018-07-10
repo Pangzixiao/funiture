@@ -7,6 +7,7 @@ import java.util.Map;
 import java.util.Set;
 
 import bean.Brand;
+import bean.Forms;
 
 public class BrandDAOImp implements BrandDAO {
 
@@ -55,6 +56,17 @@ public class BrandDAOImp implements BrandDAO {
 		return list;
 	}
 
-	
+	@Override
+	public boolean isExit(int c_id, String brand_name) throws Exception {
+		jdbcUtils.getConnection();
+		List<Forms> list = new ArrayList<Forms>();
+		String sql = "select * from brand where c_id = ? and brand_name = ?";
+		List params = new ArrayList();
+		params.add(c_id);
+		params.add(brand_name);
+		List<Map<String,Object>> maps = jdbcUtils.findMoreResult(sql, params);
+		jdbcUtils.releaseConn();
+		return !maps.isEmpty();
+	}
 
 }

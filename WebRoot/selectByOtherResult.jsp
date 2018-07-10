@@ -99,12 +99,13 @@
       <a href="${addInFavoriteUrl}">收藏 </a>
     </td>
     
-    <td width="10%" >
-    <s:url var="showPicUrl" action="">
-         <s:param name="furniture_id" value="#row.furniture_id"/>
-         <s:param name="shoper" value="row.uid"/>
+    
+    <td width="10%">
+    <s:url var="showPicUrl" action="showPic">
+         <s:param name="f.furniture_id" value="#row.furniture_id"/>
+         <s:param name="f.uid" value="#row.uid"/>
       </s:url>
-      <a href="${showCommentUrl}">查看图片</a>
+      <a href="${showPicUrl}">查看图片</a>
     </td>
     </tr>
     </s:iterator>

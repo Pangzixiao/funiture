@@ -11,4 +11,6 @@ public interface BrandDAO {
 	public boolean add(Brand brand)throws Exception;
 	//获取品牌的集合
 	public List<String> getAllBrands()throws Exception;
+	//判断某个分类下品牌是否存在
+	public boolean isExit(int c_id,String brand_name)throws Exception;
 }

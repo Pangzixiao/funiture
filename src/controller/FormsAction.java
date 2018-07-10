@@ -57,9 +57,9 @@ public class FormsAction extends ActionSupport {
 
 	public String addForm() throws Exception {
 		boolean isTrue = false;
-		System.out.println("add():form_cid"+forms.getC_id());
-		System.out.println("add():form_name"+forms.getForm_name());
-        isTrue = dao.add(forms);
+		if(!dao.isExit(forms.getC_id(),forms.getForm_name())){
+			isTrue = dao.add(forms);
+		}
 		return isTrue? "success":"fault";
 	}
 	

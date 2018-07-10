@@ -55,6 +55,17 @@ public class FormsDAOImp implements FormsDAO {
 		return list;
 	}
 
-	
+	@Override
+	public boolean isExit(int c_id, String form_name) throws Exception {
+		jdbcUtils.getConnection();
+		List<Forms> list = new ArrayList<Forms>();
+		String sql = "select * from forms where c_id = ? and form_name = ?";
+		List params = new ArrayList();
+		params.add(c_id);
+		params.add(form_name);
+		List<Map<String,Object>> maps = jdbcUtils.findMoreResult(sql, params);
+		jdbcUtils.releaseConn();
+		return !maps.isEmpty();
+	}
 
 }

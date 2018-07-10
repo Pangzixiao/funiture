@@ -66,7 +66,7 @@
 		<action name="add_form" class="controller.FormsAction" method = "addForm">
 		    <interceptor-ref name="secStack" />
 		    <result name="success" type = "redirect">/admin.jsp</result>
-		    <result name="fault">/fail.jsp</result>
+		    <result name="fault">/formIsExit.jsp</result>
 		</action>
 		
 		<action name="addFormsForType" class="controller.FormsAction" method="gettypes" >
@@ -253,7 +253,7 @@
 		<action name="add_brand" class="controller.BrandAction" method = "addBrand">
 		    <interceptor-ref name="secStack" />
 		    <result name="success" type="redirect" >/admin.jsp</result>
-		    <result name="fault">/fail.jsp</result>
+		    <result name="fault">/brandIsExit.jsp</result>
 		</action>
 		
 		<action name="addBrandForType" class="controller.BrandAction" method = "gettypes">
@@ -270,6 +270,13 @@
 		    <result name="success">/suc_add_pic.jsp</result>
 		    <result name="fail">/fail_add_pic.jsp</result>
 		</action>
+		
+		
+		<action name="showPic" class="controller.PicAction" method = "showPic">
+		    <result name="success">/suc.jsp</result>
+		    <result name="fail">/empty_pic.jsp</result>
+		</action>
+		
 	</package>
 	
 </struts>
