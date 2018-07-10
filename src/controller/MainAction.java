@@ -1,14 +1,17 @@
 package controller;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
-import java.util.Map;
 
-import com.opensymphony.xwork2.ActionContext;
 import com.opensymphony.xwork2.ActionSupport;
 
 import bean.Brand;
-import bean.Car_Furniture;
+import bean.ComparatorByPrice;
+import bean.ComparatorByPrice2;
+import bean.ComparatorBySalevolume;
+import bean.ComparatorBySalevolume2;
 import bean.Forms;
 import bean.Furniture;
 import bean.Type;
@@ -38,12 +41,18 @@ public class MainAction extends ActionSupport {
 	// 可能是常用值
 	Type type = new Type();
 	double minprice, maxprice;
-	String form_string, brand_string, sort_type = new String("1");
+	String form_string, brand_string;
+	int  sort_type ;
 	List<Furniture> furnitures;
 	Furniture furniture;
 	DetailDAO detaildao = new DetailDAOImp();
+	ComparatorByPrice comparatorByPrece = new ComparatorByPrice();
+	ComparatorByPrice2 comparatorByPrece2 = new ComparatorByPrice2();
+	ComparatorBySalevolume comparatorBySalevolume = new ComparatorBySalevolume();
+	ComparatorBySalevolume2 comparatorBySalevolume2 = new ComparatorBySalevolume2();
+	
 
-	public void setSort_type(String sort_type) {
+	public void setSort_type(int sort_type) {
 		this.sort_type = sort_type;
 	}
 
@@ -227,5 +236,31 @@ public class MainAction extends ActionSupport {
 		}
 		return SUCCESS;
 	}
+	
+	
+	public String selectForOrder() throws Exception {
+		types = typedao.getAllTypes();
+		Utils utils = new Utils();
+		formlist = utils.getAllForms(type.getC_id());
+		brandlist = utils.getAllBrands(type.getC_id());
+		furnitures = furnituredao.getAllFurnitureByType(type.getC_name());
+		System.out.println("当前的选择是:"+sort_type);
+		if(sort_type==0){
+			Collections.sort(furnitures, comparatorByPrece);
+			return "price1";
+		}else if(sort_type==1){
+			Collections.sort(furnitures, comparatorByPrece2);
+			return "price2";
+		}else if(sort_type==3){
+			Collections.sort(furnitures, comparatorBySalevolume);
+			return "salevolume1";
+		}else if(sort_type==4){
+			Collections.sort(furnitures, comparatorBySalevolume2);
+			return "salevolume2";
+		}
+		return "price1";
+		
+	}
+	
 	
 }

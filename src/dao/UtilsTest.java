@@ -3,7 +3,7 @@ package dao;
 
 import org.junit.Test;
 
-import bean.Favorite;
+import bean.Furniture;
 
 
 public class UtilsTest {
@@ -165,17 +165,18 @@ public class UtilsTest {
 //			System.out.println(o);
 //		}
 		
-		Favorite f = new Favorite();
-		f.setFurniture_id(1);
-		f.setShoper("nihao");
-		f.setUid("aa");
+//		Favorite f = new Favorite();
+//		f.setFurniture_id(1);
+//		f.setShoper("nihao");
+//		f.setUid("aa");
 //		System.out.println(favoritedao.add(f));
-		if(!favoritedao.isInFavorite(f)){
-			System.out.println("当前家具已存在");
-			System.out.println(favoritedao.add(f));
-		}
-		System.out.println("当前家具不存在");
-		
+//		if(!favoritedao.isInFavorite(f)){
+//			System.out.println("当前家具已存在");
+//			System.out.println(favoritedao.add(f));
+//		}
+//		System.out.println("当前家具不存在");
+		Furniture f =furnituredao.getFurniture("0708", 1);
+		System.out.println(f.getPic_src());
 	}
 
 }

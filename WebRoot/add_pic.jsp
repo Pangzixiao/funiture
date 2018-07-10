@@ -9,7 +9,9 @@
 </head>
 <body>
 <br>文件上传
-    <s:form name="imageForm" method="post" enctype="multipart/form-data" action="upload">
+    <s:form  method="post" enctype="multipart/form-data" action="addPic">
+        <s:textfield key="f.furniture_id" value="%{f.furniture_id}" />
+        <s:textfield key="f.uid" value="%{f.uid}"/>
         <s:file name="image"/>
      <s:submit/>
     </s:form>

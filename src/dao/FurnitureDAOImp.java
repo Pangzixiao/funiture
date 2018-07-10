@@ -30,7 +30,7 @@ public class FurnitureDAOImp implements FurnitureDAO {
 	@Override
 	public List<Furniture> getAllFurniture(String uid) throws Exception {
 		jdbcUtils.getConnection();
-		String sql = "select * from furnitures where uid = ?";
+		String sql = "select * from furnitures where uid = ? ";
 		List params = new ArrayList();
 		params.add(uid);
 		List<Furniture> list = new ArrayList<Furniture>();
@@ -184,6 +184,20 @@ public class FurnitureDAOImp implements FurnitureDAO {
 		jdbcUtils.getConnection();
 		List params = new ArrayList();
 		params.add(salesvolume);
+		params.add(furniture_id);
+		params.add(shoper);
+		istrue = jdbcUtils.updateByPreparedStatement(sql, params);
+		jdbcUtils.releaseConn();
+		return istrue;
+	}
+
+	@Override
+	public boolean updatePic(int furniture_id, String shoper, String pic) throws Exception {
+		String sql = "update furnitures set pic_src = ? where furniture_id= ? and uid = ?";
+		boolean istrue = false;
+		jdbcUtils.getConnection();
+		List params = new ArrayList();
+		params.add(pic);
 		params.add(furniture_id);
 		params.add(shoper);
 		istrue = jdbcUtils.updateByPreparedStatement(sql, params);

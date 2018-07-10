@@ -16,13 +16,10 @@
 		</interceptors>
 		<global-results>
 		   <result name="login">/index.jsp</result>
-		   <result name="ex">/ex.jsp</result>
 		</global-results>
 		
 		
-		<global-exception-mappings>
-            <exception-mapping exception="java.lang.Exception" result="ex"/>            
-        </global-exception-mappings>
+		
 		
 		
 		
@@ -130,6 +127,15 @@
 		    <result name = "input">/fail.jsp</result>
 		</action>
 		
+		
+		<action name="selectForOrder" class="controller.MainAction" method="selectForOrder" >
+		    <result name="price1">/orderByprice.jsp</result>
+		    <result name="price2">/order_Byprice.jsp</result>
+		    <result name="salevolume1">/orderBysale.jsp</result>
+		    <result name="salevolume2">/resultByOrderBysele2.jsp</result>
+		    <result name = "input">/fail.jsp</result>
+		</action>
+		
 		<action name="addInCar" class="controller.CarAction" method="addInCar" >
 		    <result name="success" type="redirect">/user.jsp</result>
 		    <result name="fail" type="redirect">/fail.jsp</result>
@@ -199,9 +205,7 @@
 		<action name="exitShoper" class="controller.ExitAction" method = "exitShoper" >
 		    <result type="redirect">/index.jsp</result>
 		</action>
-		
-		
-		
+	
 		
 		<action name="add_furniture" class="controller.FurnitureAction" method = "addFurniture">
 		    <interceptor-ref name="secStack" />
@@ -255,6 +259,16 @@
 		<action name="addBrandForType" class="controller.BrandAction" method = "gettypes">
 		    <interceptor-ref name="secStack" />
 		    <result>/addBrandForType.jsp</result>
+		</action>
+		
+		<action name="selectPic" class="controller.PicAction" method = "selectPic">
+		    <interceptor-ref name="secStack" />
+		    <result >/add_pic.jsp</result>
+		</action>
+		<action name="addPic" class="controller.PicAction" method = "addPic">
+		    <interceptor-ref name="secStack" />
+		    <result name="success">/suc_add_pic.jsp</result>
+		    <result name="fail">/fail_add_pic.jsp</result>
 		</action>
 	</package>
 	
