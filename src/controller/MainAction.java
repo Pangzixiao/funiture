@@ -251,10 +251,10 @@ public class MainAction extends ActionSupport {
 		}else if(sort_type==1){
 			Collections.sort(furnitures, comparatorByPrece2);
 			return "price2";
-		}else if(sort_type==3){
+		}else if(sort_type==2){
 			Collections.sort(furnitures, comparatorBySalevolume);
 			return "salevolume1";
-		}else if(sort_type==4){
+		}else if(sort_type==3){
 			Collections.sort(furnitures, comparatorBySalevolume2);
 			return "salevolume2";
 		}

@@ -15,10 +15,8 @@
 <s:head/>
   <s:debug/>
   </head>
-  
   <body>
-    <body>
-    <br/><a href = "user.jsp"><p>返回首页</p></a><br/>
+   <br/><a href = "user.jsp"><p>返回首页</p></a><br/>
     <table width="90%" style="border:1px solid green">
     <tr>
     <td width="5%">商家</td>

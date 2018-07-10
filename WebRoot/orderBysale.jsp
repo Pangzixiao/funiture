@@ -15,6 +15,7 @@
 <s:head/>
   <s:debug/>
   </head>
+  <body>
     <br/><a href = "user.jsp"><p>返回首页</p></a><br/>
     <table width="90%" style="border:1px solid green">
     <tr>

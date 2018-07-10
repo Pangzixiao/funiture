@@ -132,7 +132,7 @@
 		    <result name="price1">/orderByprice.jsp</result>
 		    <result name="price2">/order_Byprice.jsp</result>
 		    <result name="salevolume1">/orderBysale.jsp</result>
-		    <result name="salevolume2">/resultByOrderBysele2.jsp</result>
+		    <result name="salevolume2">/order_Bysale2.jsp</result>
 		    <result name = "input">/fail.jsp</result>
 		</action>
 		

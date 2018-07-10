@@ -93,7 +93,7 @@
       <s:form action="selectForOrder" method="post">
       <s:hidden name="type.c_id" value="%{type.c_id }"/>
       <s:hidden name="type.c_name" value="%{type.c_name}"/>
-      <s:radio list="#{'0':'销量递减','1':'销量递增','2':'价格递减','3':'价格递增'}" name="sort_type" value="0"/>
+      <s:radio list="#{'0':'价格递增','1':'价格递减','2':'销量递增','3':'销量递减'}" name="sort_type" value="0"/>
       <s:submit value="查询"/>
       </s:form>
     <br/><a href = "user.jsp"><p>返回首页</p></a><br/>
