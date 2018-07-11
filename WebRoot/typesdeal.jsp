@@ -21,6 +21,7 @@
     <td width="10%" >修改内容</td>
     <td width="10%" >查看风格</td>
     <td width="10%" >查看品牌</td>
+    <td width="10%" >删除分类</td>
     </tr>
     <s:iterator value="list" var="row">
     <tr>
@@ -46,10 +47,27 @@
       <a href="${showBrandUrl}">查看品牌</a>
     </td>
     
+    <td width="10%" >
+      <s:url var="delTypeUrl" action="delType">
+         <s:param name="type.c_id" value="#row.getC_id()"/>
+      </s:url>
+      <a href="${delTypeUrl}" onClick="return readyDel();">删除分类</a>
+    </td>
     
     </tr>
     </s:iterator>
+    <tr>
+        <td> 
+           <a href = "addTypeByAdmin.jsp">添加分类</a>
+        </td>
+    </tr>
     </table>
+    
+    <script>
+      function readyDel(){
+        return confirm("是否真的删除？");
+      }
+    </script>
   </body>
 </html>
 

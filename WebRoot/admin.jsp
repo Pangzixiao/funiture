@@ -21,7 +21,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   <s:debug/>
   <p>管理员登录成功</p><br>
-  <p>数据无价，请尽量不要修改数据。</p><br>
   <a href="showTypes">显示所有分类</a>
   <a href="addFormsForType">添加风格</a>
   <a href="addBrandForType">添加品牌</a>

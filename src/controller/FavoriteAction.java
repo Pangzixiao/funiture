@@ -70,13 +70,9 @@ public class FavoriteAction extends ActionSupport {
     	boolean isTrue = false;
     	Map session = ActionContext.getContext().getSession();
     	String uid = (String)session.get("user");
-    	System.out.println("当前用户是:"+uid);
     	if(uid != null){
     		favorite.setUid(uid);
     		favorite.setFurniture_id(id);
-    		System.out.println("uid:"+favorite.getUid());
-    		System.out.println("shoper:"+favorite.getShoper());
-    		System.out.println("f_id:"+favorite.getFurniture_id());
     		if(!dao.isInFavorite(favorite)){
     			isTrue = dao.add(favorite);
     		}

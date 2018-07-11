@@ -36,6 +36,18 @@
 			<result name="fail">/fail.jsp</result>
 			<result name="input">/regist.jsp</result>
 		</action>
+		
+		<action name="addType" class="controller.TypeAction" method="addType">
+            <interceptor-ref name="secStack" />
+            <result name="success">/type_suc.jsp</result>
+            <result name="fail">/type_fail.jsp</result>
+        </action>
+        
+        <action name="delType" class="controller.TypeAction" method="delType">
+            <interceptor-ref name="secStack" />
+            <result name="success">/type_suc.jsp</result>
+            <result name="fail">/type_fail.jsp</result>
+        </action>
   
         <action name="showTypes" class="controller.TypeAction">
             <interceptor-ref name="secStack" />

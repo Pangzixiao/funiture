@@ -19,8 +19,8 @@
     <tr>
     <td width="10%">商家</td>
     <td width="20%" >家具名称</td>
-    <td width="10%" >单价</td>
-    <td width="10%" >销售量</td>
+    <td width="5%" >单价</td>
+    <td width="5%" >销售量</td>
     </tr>
     
     <s:iterator value="list" var="row">
@@ -28,8 +28,8 @@
     <tr>
       <td width="10%"><s:property value="#row.uid"/></td>
       <td width="20%" ><s:property value="#row.furniture_name"/></td>
-      <td width="10%" ><s:property value="#row.price"/></td>
-      <td width="10%" ><s:property value="#row.salevolume"/></td>
+      <td width="5%" ><s:property value="#row.price"/></td>
+      <td width="5%" ><s:property value="#row.salevolume"/></td>
     <td width="10%">
       <s:url var="showInfoUrl" action="showDetailByid">
          <s:param name="detail.detail_id" value="#row.detail_id"/>
