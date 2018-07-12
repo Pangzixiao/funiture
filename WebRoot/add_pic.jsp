@@ -5,15 +5,15 @@
 <html>
 <head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
-<title>文件上传</title>
+<title>选择图片</title>
 </head>
 <body>
-<br>文件上传
+<br>选择商品图片
     <s:form  method="post" enctype="multipart/form-data" action="addPic">
-        <s:textfield key="f.furniture_id" value="%{f.furniture_id}" />
-        <s:textfield key="f.uid" value="%{f.uid}"/>
+        <s:hidden key="f.furniture_id" value="%{f.furniture_id}" />
+        <s:hidden key="f.uid" value="%{f.uid}"/>
         <s:file name="image"/>
-     <s:submit/>
+     <s:submit value="提交"/>
     </s:form>
     
 </body>

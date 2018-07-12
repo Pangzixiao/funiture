@@ -46,7 +46,6 @@ public class CarAction extends ActionSupport {
 		Map session = ActionContext.getContext().getSession();
 		List<Car_Furniture> cars = (List<Car_Furniture>) session.get("car");
 		if (cars == null) {
-			System.out.println("用户没有购物车");
 			cars = new ArrayList<Car_Furniture>();
 			session.put("car", cars);
 		}
@@ -56,7 +55,6 @@ public class CarAction extends ActionSupport {
 	public String execute() throws Exception {
 		List<Car_Furniture> cars = getCar();
 		if (cars.isEmpty()) {
-			System.out.println("购物车为空");
 			return "empty";
 		} else {
 			for (Car_Furniture car : cars) {
@@ -82,7 +80,7 @@ public class CarAction extends ActionSupport {
 			return (String) o;
 		}
 	}
-
+    //加入购物车
 	public String addInCar() throws Exception {
 		boolean isTrue = false;
 		Map session = ActionContext.getContext().getSession();
@@ -97,24 +95,22 @@ public class CarAction extends ActionSupport {
 			}
 			cars.add(car_furniture);
 			session.put("car", cars);
-			System.out.println("添加到成功购物车");
-			
 			isTrue = true;
 		}
 		return isTrue ? "success" : "fail";
 	}
-	
+	//从购物车中移除制定家具
 	public String removeFromCar() throws Exception {
 		boolean isTrue = false;
-
 		Map session = ActionContext.getContext().getSession();
 		List<Car_Furniture> cars = (List<Car_Furniture>) session.get("car");
 		car_furniture.setF_id(id);
+		//为了接收合格的家具建立的新的list
 		List<Car_Furniture> newcars= new ArrayList<Car_Furniture>();
+		//判断当前购物车是否为空
 		if (cars != null) {
 			for (Car_Furniture car : cars) {
-				System.out.println("caruid:"+car.getShoper()+"  carf_id:"+car.getF_id());
-				
+				//用重写后的equals方法判断两个对象是否相同
 				if (!car.equals(car_furniture)) {
 					newcars.add(car);
 				}
@@ -125,7 +121,6 @@ public class CarAction extends ActionSupport {
 			cars = new ArrayList<Car_Furniture>();
 			session.put("car", cars);
 		}
-
 		return isTrue ? "success" : "fail";
 	}
 }

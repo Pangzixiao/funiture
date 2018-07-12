@@ -20,8 +20,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <sj:head/>
   </head>
   <s:debug/>
-  <b>该商品暂时没有评论</b>
-    
+  <body>
+  <b>还没有记录哦</b>
   </body>
 </html>
 

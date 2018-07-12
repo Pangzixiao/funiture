@@ -18,12 +18,10 @@ public class FavoriteAction extends ActionSupport {
 	List<Furniture> list = new ArrayList<Furniture>();
 	Favorite favorite;
 	int id;
-    FurnitureDAO furnituredao = new FurnitureDAOImp();
-    FavoriteDAO dao = new FavoriteDAOImp();
-    
-    
-    
-    public int getId() {
+	FurnitureDAO furnituredao = new FurnitureDAOImp();
+	FavoriteDAO dao = new FavoriteDAOImp();
+
+	public int getId() {
 		return id;
 	}
 
@@ -40,57 +38,62 @@ public class FavoriteAction extends ActionSupport {
 		return list;
 	}
 
-	private List<Favorite> getAllFavorite() throws Exception{
-    	Map session = ActionContext.getContext().getSession();
-    	String uid = (String)session.get("user");
-    	List<Favorite> lists = dao.getAllFavorite(uid);
-    	return lists;
-    }
-    //获取收藏夹
-    public String execute() throws Exception{
-    	List<Favorite> fs = getAllFavorite();
-		if(fs.isEmpty()){
+	private List<Favorite> getAllFavorite() throws Exception {
+		Map session = ActionContext.getContext().getSession();
+		String uid = (String) session.get("user");
+		List<Favorite> lists = dao.getAllFavorite(uid);
+		return lists;
+	}
+
+	// 获取收藏夹
+	public String execute() throws Exception {
+		//congsession中获取用户名并查询所有的收藏
+		List<Favorite> fs = getAllFavorite();
+		if (fs.isEmpty()) {
 			return "empty";
-		}else{
-			for(Favorite f : fs ){
+		} else {
+			for (Favorite f : fs) {
+				//获取商品的具体信息
 				Furniture ftemp = furnituredao.getFurniture(f.getShoper(), f.getFurniture_id());
-				if(ftemp != null ){
+				if (ftemp != null) {
 					list.add(ftemp);
 				}
 			}
-			if(list.isEmpty())
+			if (list.isEmpty())
 				return "empty";
 			else
 				return "success";
 		}
-    }
-    
-    //收藏
-    public String addInFavorite() throws Exception{
-    	boolean isTrue = false;
-    	Map session = ActionContext.getContext().getSession();
-    	String uid = (String)session.get("user");
-    	if(uid != null){
-    		favorite.setUid(uid);
-    		favorite.setFurniture_id(id);
-    		if(!dao.isInFavorite(favorite)){
-    			isTrue = dao.add(favorite);
-    		}
-    	}
-    	return isTrue?"success":"fail";
-    }
-    
-  //取消收藏
-    public String removeFromFavorite() throws Exception{
-    	boolean isTrue = false;
-    	Map session = ActionContext.getContext().getSession();
-    	String uid = (String)session.get("user");
-    	if(uid != null){
-    		favorite.setUid(uid);
-    		favorite.setFurniture_id(id);
-    		isTrue = dao.del(favorite);
-    	}
-    	return isTrue?"success":"fail";
-    }
-    
+	}
+
+	// 收藏
+	public String addInFavorite() throws Exception {
+		boolean isTrue = false;
+		// 获取用户名
+		Map session = ActionContext.getContext().getSession();
+		String uid = (String) session.get("user");
+		if (uid != null) {
+			favorite.setUid(uid);
+			favorite.setFurniture_id(id);
+			// 判断是否存在
+			if (!dao.isInFavorite(favorite)) {
+				isTrue = dao.add(favorite);
+			}
+		}
+		return isTrue ? "success" : "fail";
+	}
+
+	// 取消收藏
+	public String removeFromFavorite() throws Exception {
+		boolean isTrue = false;
+		Map session = ActionContext.getContext().getSession();
+		String uid = (String) session.get("user");
+		if (uid != null) {
+			favorite.setUid(uid);
+			favorite.setFurniture_id(id);
+			isTrue = dao.del(favorite);
+		}
+		return isTrue ? "success" : "fail";
+	}
+
 }

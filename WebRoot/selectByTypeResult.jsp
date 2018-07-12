@@ -100,7 +100,7 @@
     <table width="80%" style="border:1px solid green">
     <tr>
     <td width="5%">商家</td>
-    <td width="20%">家具名称</td>
+    <td width="10%">家具名称</td>
     <td width="5%">价格</td>
     <td width="5%">销售量</td>
     <td width="8%">详细信息</td>
@@ -113,7 +113,7 @@
 
     <tr>
       <td width="5%"><s:property value="#row.uid"/></td>
-      <td width="15%"><s:property value="#row.furniture_name"/></td>
+      <td width="10%"><s:property value="#row.furniture_name"/></td>
       <td width="5%"><s:property value="#row.price"/></td>
       <td width="5%"><s:property value="#row.salevolume"/></td>
     

@@ -30,12 +30,15 @@ public class CommentAction extends ActionSupport {
 
 		return SUCCESS;
 	}
-
+    //添加评论
 	public String addComment() throws Exception {
 		boolean istrue = false;
+		//判断评论是否存在
 		if(commentdao.isExite(comment.getShoper(), comment.getFurniture_id(), comment.getUser())){
+			//更新评论
 			istrue = commentdao.update(comment);
 		}else{
+			//添加评论
 			istrue = commentdao.add(comment);
 		}
 		return istrue ? "success" : "fail";

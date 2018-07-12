@@ -15,34 +15,34 @@
   </head>
   
   <body>
-    <table width="80%" style="border:1px solid green">
+    <table width="66%" style="border:1px solid green">
     <tr>
     <td width="5%">商家</td>
-    <td width="20%">家具名称</td>
+    <td width="15%">家具名称</td>
     <td width="5%">价格</td>
-    <td width="10%">销售量</td>
-    <td width="10%">详细信息</td>
-    <td width="10%">显示评论</td>
+    <td width="6%">销售量</td>
+    <td width="6%">详细信息</td>
+    <td width="6%">显示评论</td>
     <td width="10%">从购物车中移除</td>
-    <td width="10%">购买</td>
-    <td width="10%">查看图片</td>
+    <td width="6%">购买</td>
+    <td width="6%">查看图片</td>
     </tr>
     <s:iterator value="list" var="row">
 
     <tr>
       <td width="5%"><s:property value="#row.uid"/></td>
-      <td width="20%"><s:property value="#row.furniture_name"/></td>
+      <td width="15%"><s:property value="#row.furniture_name"/></td>
       <td width="5%"><s:property value="#row.price"/></td>
-      <td width="10%"><s:property value="#row.salevolume"/></td>
+      <td width="6%"><s:property value="#row.salevolume"/></td>
 
     
-    <td width="10%">
+    <td width="6%">
       <s:url var="showInfoUrl" action="showDetailByid">
          <s:param name="detail.detail_id" value="#row.detail_id"/>
       </s:url>
       <a href="${showInfoUrl}">详细信息</a>
     </td>
-     <td width="10%">
+     <td width="6%">
     <s:url var="showCommentUrl" action="showComment">
          <s:param name="comment.furniture_id" value="#row.furniture_id"/>
          <s:param name="comment.shoper" value="#row.uid"/>
@@ -58,7 +58,7 @@
       <a href="${removeFromCarUrl}">从购物车中移除</a>
     </td>
     
-    <td width="10%">
+    <td width="6%">
     <s:url var="payUrl" action="pay">
          <s:param name="order.furniture_id" value="#row.furniture_id"/>
          <s:param name="name" value="#row.furniture_name"/>
@@ -67,7 +67,7 @@
       <a href="${payUrl}">购买</a>
     </td>
     
-    <td width="10%">
+    <td width="6%">
     <s:url var="showPicUrl" action="showPic">
          <s:param name="f.furniture_id" value="#row.furniture_id"/>
          <s:param name="f.uid" value="#row.uid"/>

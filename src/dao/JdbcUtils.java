@@ -64,7 +64,8 @@ public class JdbcUtils
      * @param params 
      * @return 
      * @throws SQLException 
-     */  
+     */ 
+    //完成对数据库的表的添加删除和修改的操作 
     public boolean updateByPreparedStatement(String sql, List<Object> params)  
             throws SQLException  
     {  

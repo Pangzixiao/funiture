@@ -70,15 +70,15 @@ public class PicAction extends ActionSupport {
 		f = dao.getFurniture(f.getUid(), f.getFurniture_id());
 		return SUCCESS;
 	}
-	
+	//添加图片
 	public String addPic() throws Exception {
 		boolean isTrue = false;
+		//获取路径
 		String realpath = ServletActionContext.getServletContext().getRealPath("/upload");
 		File destFile = new File(realpath, imageFileName);
-//		File destFile1 = new File("",imageFileName);
+		//复制
 		Files.copy(image.toPath(), destFile.toPath(), StandardCopyOption.REPLACE_EXISTING);
-//		Files.copy(image.toPath(), destFile1.toPath(),StandardCopyOption.REPLACE_EXISTING);
-		System.out.println("服务器路径:"+realpath);
+		//更新数据库中的图片名
 		isTrue = dao.updatePic(f.getFurniture_id(), f.getUid(), imageFileName);
 		return isTrue?"success":"fail";
 	}
@@ -86,7 +86,7 @@ public class PicAction extends ActionSupport {
 	
 	
 	public String showPic() throws Exception {
-		System.out.println("服务器路径:"+path);
+		//通过家具id和用户名获得图片名
 		path = dao.findPicName(f.getFurniture_id(), f.getUid());
 		if(path.isEmpty()){
 			return "fail";

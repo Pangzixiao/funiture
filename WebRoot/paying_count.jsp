@@ -18,16 +18,16 @@
   </head>
   
   <body>
-    <s:form  action="count_fee" method ="post">
-       <s:textfield name = "order.username" value="%{order.username}" label="用户名"/>
-       <s:textfield name = "order.shoper" value="%{order.shoper}" label="商店id"/>
-       <s:textfield name = "name" value="%{name} " label="商品名"/>
-       <s:hidden name = "order.furniture_id" value="%{order.furniture_id}"/>
-       <s:textfield name = "order.count" label="请输入购买数量"/>
-       <sj:datepicker value="today" id="date" name="order.paydate" key="date" displayFormat="%{getText('format.date.input')}"
-   changeMonth="true" changeYear="true"/>
-       <s:submit value="确认并提交订单"/>
-    </s:form>
+	    <s:form  action="count_fee" method ="post">
+	       <s:textfield name = "order.username" value="%{order.username}" label="用户名"/>
+	       <s:textfield name = "order.shoper" value="%{order.shoper}" label="商店id"/>
+	       <s:textfield name = "name" value="%{name} " label="商品名"/>
+	       <s:hidden name = "order.furniture_id" value="%{order.furniture_id}"/>
+	       <s:textfield name = "order.count" label="请输入购买数量"/>
+	       <sj:datepicker value="today" id="date" name="order.paydate" key="date" displayFormat="%{getText('format.date.input')}"
+	   changeMonth="true" changeYear="true"/>
+	       <s:submit value="确认并提交订单"/>
+	    </s:form>
     
   </body>
 </html>

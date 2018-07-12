@@ -17,13 +17,11 @@
     <s:debug/>
     <p>分类：&nbsp&nbsp&nbsp
     <s:iterator value="types" var="type">
-      
       <s:url var="selectTypesUrl" action="selectByType">
          <s:param name="type.c_id" value="#type.getC_id()"/>
          <s:param name="type.c_name" value="#type.getC_name()"/>
       </s:url>
       <a href="${selectTypesUrl}"><s:property value="#type.c_name"/></a>&nbsp
-    
     </s:iterator>
     <br>
     <p>风格：&nbsp&nbsp&nbsp

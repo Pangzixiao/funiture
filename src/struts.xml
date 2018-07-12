@@ -92,12 +92,12 @@
 		
 		<action name="findFromCar" class="controller.CarAction" >
 		    <result name="success">/showFunituresInCar.jsp</result>
-		    <result name="empty">/empty_car.jsp </result>
+		    <result name="empty">/empty.jsp </result>
 		</action>
 		
 		<action name="findFavorite" class="controller.FavoriteAction" >
 		    <result name="success">/showFunituresInFavorite.jsp</result>
-		    <result name="empty">/empty_favorite.jsp </result>
+		    <result name="empty">/empty.jsp </result>
 		</action>
 		
 		<action name="gettypes" class="controller.MainAction" method="gettypes" >
@@ -141,10 +141,10 @@
 		
 		
 		<action name="selectForOrder" class="controller.MainAction" method="selectForOrder" >
-		    <result name="price1">/orderByprice.jsp</result>
-		    <result name="price2">/order_Byprice.jsp</result>
-		    <result name="salevolume1">/orderBysale.jsp</result>
-		    <result name="salevolume2">/order_Bysale2.jsp</result>
+		    <result name="price1">/selectByTypeResult.jsp</result>
+		    <result name="price2">/selectByTypeResult.jsp</result>
+		    <result name="salevolume1">/selectByTypeResult.jsp</result>
+		    <result name="salevolume2">/selectByTypeResult.jsp</result>
 		    <result name = "input">/fail.jsp</result>
 		</action>
 		
@@ -197,17 +197,17 @@
 		
 		<action name="showComment" class="controller.CommentAction" method="showComment" >
 		    <result name="success">/showComment.jsp</result>
-		    <result name="fail" type="redirect">/empty_comment.jsp</result>
+		    <result name="fail" type="redirect">/empty.jsp</result>
 		</action>
 		
 		<action name="showsPayRecordForUser" class="controller.OrderAction" method="showsPayRecordForUser" >
 		    <result name="success">/showPaidReportForUser.jsp</result>
-		    <result name="fail" type="redirect">/empty_paidReport.jsp</result>
+		    <result name="fail" type="redirect">/empty.jsp</result>
 		</action>
 		
 		<action name="showTotalInfoForShoper" class="controller.FurnitureAction" method="showTotalInfoForShoper" >
 		    <result name="success">/showTotalInfoForShoper.jsp</result>
-		    <result name="fail" type="redirect">/empty_paidReport.jsp</result>
+		    <result name="fail" type="redirect">/empty.jsp</result>
 		</action>
 		
 		<action name="exit" class="controller.ExitAction" >
@@ -240,12 +240,12 @@
 		<action name="showUpInfo" class="controller.FurnitureAction" method ="getAllFunitureByshoper">
 		    <interceptor-ref name="secStack" />
 		    <result name="success">/showShoperFunitures.jsp</result>
-		    <result name="fail" type="redirect">/empty_selectResult.jsp</result>
+		    <result name="fail" type="redirect">/empty.jsp</result>
 		</action>
 		
 		<action name="showDetailByid" class="controller.DetailAction" method ="findById">
 		    <result name="success">/detail_list.jsp</result>
-		    <result name="fail" type="redirect">/empty_selectResult.jsp</result>
+		    <result name="fail" type="redirect">/empty.jsp</result>
 		</action>
 		
 		
@@ -286,7 +286,7 @@
 		
 		<action name="showPic" class="controller.PicAction" method = "showPic">
 		    <result name="success">/suc.jsp</result>
-		    <result name="fail">/empty_pic.jsp</result>
+		    <result name="fail">/empty.jsp</result>
 		</action>
 		
 	</package>
